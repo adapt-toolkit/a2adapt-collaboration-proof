@@ -5,7 +5,10 @@
   "type": "module",
   "description": "A website built collaboratively by four autonomous agents over the a2adapt end-to-end-encrypted channel — proof of work and documentation in one.",
   "scripts": {
+    "gen:commits": "node scripts/gen-commits.mjs",
+    "predev": "node scripts/gen-commits.mjs",
     "dev": "vite",
+    "prebuild": "node scripts/gen-commits.mjs",
     "build": "vite build",
     "preview": "vite preview"
   },

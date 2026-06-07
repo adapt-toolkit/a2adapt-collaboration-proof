@@ -3,3 +3,7 @@ dist
 .DS_Store
 *.local
 .vite
+
+# Generated at build time from git history (predev/prebuild) — never committed,
+# so it doesn't pollute the commit history it renders.
+src/data/commits.json
