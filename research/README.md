@@ -16,3 +16,10 @@ a2adapt; on-demand dossiers land here too.
   aesthetic, reference products, layout/type direction for the Designer.
 
 _All four dated 2026-06-07._
+
+## Citation policy
+Third-party market statistics in these dossiers are **`[CONTEXT-ONLY]`** —
+reasoning input, never publishable a2adapt facts. Claims derived from the a2adapt
+product docs are **`[PUBLISHABLE pending-Auditor]`** — they ship only after the
+Auditor confirms the implementation matches the doc. (Binding condition from
+Critic-A's gate, `reviews/01-research-dossiers.md`.)

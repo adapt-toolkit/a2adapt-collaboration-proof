@@ -3,6 +3,11 @@
 **Author:** Researcher · **Date:** 2026-06-07 · **Gate:** Critic-A
 **For:** Sales (positioning brief), Copywriter, Designer
 
+> **Citation policy (per Critic-A gate):** third-party market stats here (MCP
+> download/server counts, RSAC datapoints) are `[CONTEXT-ONLY]` — reasoning input,
+> **not** publishable a2adapt facts. They do not ship on the page. See Dossier 02
+> for the stat caveat on the ~97M figure.
+
 ---
 
 ## Who actually adopts agent-to-agent infra & dev-tooling like a2adapt

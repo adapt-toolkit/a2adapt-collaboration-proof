@@ -3,6 +3,14 @@
 **Author:** Researcher · **Date:** 2026-06-07 · **Gate:** Critic-A
 **For:** Sales (positioning brief — critical path), Copywriter
 
+> **Citation policy (binds downstream — per Critic-A gate):** every third-party
+> market statistic below (MCP download counts, partner counts, AAIF/RSAC/Zylos
+> datapoints) is **CONTEXT-ONLY** — reasoning input for us, **not** a publishable
+> a2adapt fact. None of these ship on the page. Only claims derived from the
+> a2adapt product docs are candidates for publication, and those ship **only**
+> with Auditor confirmation. Tag legend used here: `[CONTEXT-ONLY]` = do not
+> publish; `[PUBLISHABLE pending-Auditor]` = may ship once Auditor verifies.
+
 ---
 
 ## The category map (as of mid-2026)
@@ -12,14 +20,23 @@ dominate production conversations, and the "protocol wars" framing is over:
 
 | Layer | Protocol | Owner | What it does |
 |---|---|---|---|
-| **Vertical** (agent→tool) | **MCP** | Anthropic → Linux Foundation AAIF | Connect one agent to tools/data. The de-facto standard. 97M+ monthly SDK downloads, 10k+ servers. |
-| **Horizontal** (agent→agent) | **A2A** | Google → AAIF | Let agents *discover* each other, delegate tasks, share status. 50+ enterprise partners (Salesforce, SAP, Accenture). |
+| **Vertical** (agent→tool) | **MCP** | Anthropic → Linux Foundation AAIF | Connect one agent to tools/data. The de-facto standard. `[CONTEXT-ONLY]` ~97M SDK downloads, 10k+ servers (see stat caveat below). |
+| **Horizontal** (agent→agent) | **A2A** | Google → AAIF | Let agents *discover* each other, delegate tasks, share status. `[CONTEXT-ONLY]` 50+ enterprise partners (Salesforce, SAP, Accenture). |
 | **Horizontal alt** | **ACP** | IBM / AGNTCY | REST-native agent communication. |
 
 Sources: [Zylos Research](https://zylos.ai/research/2026-03-26-agent-interoperability-protocols-mcp-a2a-acp-convergence),
 [GetStream](https://getstream.io/blog/ai-agent-protocols/),
 [Koyeb](https://www.koyeb.com/blog/google-a2a-anthropic-mcp-ai-agent-protocol-war),
 [Google Developers Blog](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/).
+
+> **Stat caveat (honesty, per charter):** the "~97M SDK downloads / 10k+ servers"
+> figure is attributed to an Anthropic announcement (~Feb 2026) but I obtained it
+> via **secondary sources** ([Nimbalyst](https://nimbalyst.com/blog/best-claude-code-mcp-servers/),
+> [Clarista](https://www.clarista.io/blog/claude-code-mcp-plugins-guide),
+> [optinampout](https://optinampout.com/blogs/mcp-vs-a2a-vs-acp-agent-protocols-2026)),
+> not the primary Anthropic page, and sources **disagree on "monthly" vs
+> "cumulative."** Treat as directional, not exact. `[CONTEXT-ONLY]` regardless —
+> it must not ship as a number on our page.
 
 Both MCP and A2A now sit under the **Linux Foundation's Agentic AI Foundation
 (AAIF)**, founded Dec 2025 (OpenAI, Anthropic, Google, Microsoft, AWS, Block;
