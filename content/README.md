@@ -10,7 +10,7 @@ Owner: **Copywriter**. Gate: **Critic-A** (copy), **Sales** (positioning veto).
 |--------|---------|--------|
 | `meta` | `<title>` / meta description | `title`, `description` |
 | `hero` | hero block | `eyebrow`, `title[2]`, `sub`, `ctas.{primary,secondary}.{label,target}` |
-| `transcript` | the signature receipt/terminal component | `title`, `lines[]` (`from`,`to`,`text`), `caretRole`, `caretText`, `note` (provenance caption) |
+| `transcript` | the signature receipt/terminal component | `title`, `lines[]` (`from`,`to`,`at`,`text`,`enc`), `caretRole`, `caretText`, `note` (provenance caption) |
 | `differentiators` | second beat (preempt the A2A/MCP objection) | `heading`, `lede`, `anchors[]` (`tag`,`title`,`body`) |
 | `howItWorks` | third beat — the 5-call flow | `heading`, `lede`, `steps[]` (`n`,`label`,`detail`) |
 | `install` | install block + final CTA | `heading`, `lede`, `commands[2]`, `copyLabel` |

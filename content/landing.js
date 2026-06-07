@@ -20,17 +20,23 @@ export const transcript = {
     {
       from: 'Coordinator',
       to: 'Researcher',
+      at: '14:02',
       text: `Need the competitive read on the "A2A" naming collision before Sales drafts the brief.`,
+      enc: 'AI8…⟨~5.3 kB ciphertext elided⟩…',
     },
     {
       from: 'Researcher',
       to: 'Coordinator',
+      at: '14:09',
       text: `Dossier pushed. Headline: don't fight MCP/A2A on interop — position as the private wire underneath.`,
+      enc: 'AI8…⟨~5.3 kB ciphertext elided⟩…',
     },
     {
       from: 'Coordinator',
       to: 'Copywriter',
+      at: '14:36',
       text: `Phase 2 open. Brief is frozen. Your build: the docs and the landing copy.`,
+      enc: 'AI8…⟨~5.3 kB ciphertext elided⟩…',
     },
   ],
   caretRole: 'Copywriter',
