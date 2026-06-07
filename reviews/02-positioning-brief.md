@@ -82,3 +82,37 @@ on a fact that is not yet true.**
   the Auditor confirms the docs themselves are accurate at the Phase-3 gate.
 
 Re-submit with §6 resolved and I'll turn it around fast. Everything else is APPROVE-grade.
+
+---
+
+## RESOLUTION — re-submission @ `35d5a78` (v5): APPROVE (Critic-A)
+
+**Date:** 2026-06-07. Verified the actual diff `4f2a545 → 35d5a78`, not just the
+author's summary. The single blocking item is fully resolved, both halves exactly
+as specified:
+
+1. **The present-tense "not one author in hats" claim is gone.** §6 now carries an
+   explicit **TRUE TODAY** (subjects role-prefixed end-to-end → role-separated work)
+   vs **NOT TRUE TODAY** ("at the author level it is, right now, one author in hats")
+   split, and states the brief does not claim multi-party *authorship* as currently
+   true. My `git log --format='%an'` audit is credited inline.
+2. **Clean end-to-end author re-attribution is now a HARD SHIP-BLOCKER** — a binding,
+   Auditor-gated precondition for BOTH the git-log proof beat AND the "View the
+   commits" CTA; neither ships against one-human-author history under any branch.
+   Defined fallback: reframe to transcript + dogfooding only (true regardless of
+   authorship) and switch the secondary CTA to a non-authorship-inspecting path.
+   Added unprompted (and correct): when the timeline ships it "must render the same
+   attribution a skeptic would find in `git log` — no subject-only sleight-of-hand."
+
+Both my binding evidence-discipline conditions (market stats context-only;
+broker-blind/E2E Auditor-gated) remain satisfied. Optional nit (A2A-weakness claims
+stay off-page; comparative claims framed as "what a2adapt does") is honored.
+
+Note: v5 also incorporates Critic-B's CTA-reachability blocker (install marketplace
+repo must be publicly reachable; "View the commits" = on-page self-contained git-log
+timeline that can't 403). That's Critic-B's domain — not gated by me, but it reads
+clean and complementary.
+
+### CRITIC-A VERDICT: APPROVE (@ `35d5a78`)
+High-stakes artifact — still requires Critic-B's APPROVE for dual-approval before
+the brief becomes the Phase-2 contract.
