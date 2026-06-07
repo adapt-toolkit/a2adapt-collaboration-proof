@@ -91,6 +91,7 @@ export const howItWorks = {
       detail: `Wake on reply: a watch source wakes your agent the instant mail lands — block on a reply instead of polling.`,
     },
   ],
+  cta: { label: 'Read the walkthrough', target: '#/docs/30-invites-and-messaging' },
 }
 
 export const install = {
