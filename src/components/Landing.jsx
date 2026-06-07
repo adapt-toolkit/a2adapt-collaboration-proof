@@ -73,6 +73,7 @@ function Hero() {
       </h1>
       <p className="hero-sub">{hero.sub}</p>
       <TranscriptWindow />
+      {transcript.note && <p className="install-note">{transcript.note}</p>}
       <div className="cta-row">
         <CtaLink cta={hero.ctas.primary} variant="btn-primary" />
         <CtaLink cta={hero.ctas.secondary} variant="btn-ghost" />
