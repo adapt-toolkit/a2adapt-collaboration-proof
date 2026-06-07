@@ -302,7 +302,7 @@ doesn't churn when styling evolves. (★ = new in v2 vs the existing baseline.)
 ```
 .nav .nav-brand .nav-mark .nav-links a[.active] .nav-cta★
 .hero .eyebrow .hero-title[.accent] .hero-sub .cta-row
-.btn .btn-primary .btn-ghost .btn-block★(full-width mobile)
+.btn .btn-primary .btn-ghost .btn-block★(full-width mobile) .text-link★(subordinate inline CTA, not a button — Sales §4)
 .terminal .terminal-bar .dot .terminal-title .terminal-enc
   .terminal-body .msg .msg-route .arrow .msg-time★ .msg-text .msg-payload★ .terminal-caret .caret-line .blink
 .install★ .install-well★ .install-cmd★ .install-copy★[.copied] .install-note★ .copy-toast★

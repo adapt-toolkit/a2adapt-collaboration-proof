@@ -118,6 +118,9 @@ h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; }
 .btn-ghost { background: transparent; color: var(--fg); border-color: var(--border); }
 .btn-ghost:hover { border-color: var(--accent-line); color: var(--accent); }
 .btn-block { width: 100%; }
+/* subordinate inline text-link CTA — visually below .btn, never a button (Sales §4 ruling). accent text, no fill/border/glow; AA (~11:1 accent on bg/panel) */
+.text-link { display: inline-flex; align-items: center; gap: 0.35em; color: var(--accent); font-weight: 500; font-size: 0.95rem; background: none; border: 0; padding: 0; cursor: pointer; }
+.text-link:hover { text-decoration: underline; }
 
 /* ============ hero (§4.2) ============ */
 .landing { display: flex; flex-direction: column; gap: var(--s7); }
