@@ -49,7 +49,7 @@ This returns a base64 blob and records a pending invite tagged `"Peer"`. The blo
 embeds **your** identity, your display name, and an invite id:
 
 ```
-AI8IAwMAAACUAY8...<~5 KB of base64 elided>...wEHjwfAQ...<redacted>
+AI8...<~5 KB of base64 elided>...<redacted>
 ```
 
 Hand this blob to Peer **out of band** — any channel you already trust.
