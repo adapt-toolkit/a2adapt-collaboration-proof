@@ -47,7 +47,7 @@ distrust (Dossier 04 D, §8 "don't say").
 | `--panel-2` | `#0a0f16` | terminal chrome, code wells, inset |
 | `--fg` | `#e7eef6` | primary text (≥ 13.5:1 on `--bg` — AAA) |
 | `--muted` | `#8b98a8` | secondary prose (≥ 5.3:1 — AA) |
-| `--faint` | `#5b6675` | timestamps, hashes, captions (≥ 3.4:1 — AA large/non-text only) |
+| `--faint` | `#737e8d` | dimmest **text** tier — timestamps, hashes, captions (≥ 4.7:1 on `--bg` — passes AA normal text) |
 | `--border` | `#1a212c` | card/well borders |
 | `--border-soft` | `#141a23` | hover fills, subtle dividers |
 
@@ -77,7 +77,7 @@ color is never the sole signal (a11y, §6).
 | Coordinator | `#7c9cff` | indigo |
 | Researcher | `#5bd0e6` | cyan |
 | Sales | `#e6b85b` | amber |
-| Designer | `#2ee6a6` | green — shares brand hue (this is *my* line; intentional) |
+| Designer | `#d98fcf` | orchid — desaturated, distinct from violet/rose. **No green in the id scale** (brand accent stays exclusive to CTA/encryption — Critic-A blocker 1) |
 | Engineer | `#9d8bff` | violet |
 | Copywriter | `#ff9e7a` | coral |
 | Auditor | `#ff7a93` | rose |
@@ -87,6 +87,13 @@ color is never the sole signal (a11y, §6).
 
 Implementation: each `.idtag` / timeline item sets `--id-color` inline from data; styling reads
 `color-mix(in srgb, var(--id-color) …)` for fill/border so one rule serves all roles.
+
+**Text-contrast guarantee (Critic-A nit a):** every `--id-*` value is chosen in the **light tier** and
+verified ≥ 4.5:1 on `--panel`/`--bg` (lowest is slate `#8794a6` ≈ 6:1; orchid `#d98fcf` ≈ 7.6:1), so
+using `--id-color` for the tag's own label text carries **no** contrast risk. The categorical hue drives
+the tag/node **fill + border + label**; it is never the *sole* signal (the tag always carries a text
+role label). Identity colors are scoped to `.idtag` / timeline / team accents only — they never appear
+as a CTA or interactive affordance, so they can't be mistaken for the accent's "clickable" meaning.
 
 ### 1.4 Spacing, radii, motion, layering
 - **Spacing scale** (8px base): `--s1:.5rem --s2:.75rem --s3:1rem --s4:1.5rem --s5:2rem --s6:3rem --s7:4.5rem`.
@@ -214,6 +221,10 @@ explanation. Each step = a small numbered card; connective arrows between (stack
 - **On-page git-log timeline** rendered from committed `commits.json` (no external repo dependency —
   it **can't 403**; §4-binding-ii, §6). Vertical rail; each item = identity tag (role color) + short
   hash + **commit subject** line. This is the destination of the "View the commits" CTA.
+  - **Anchor reconciliation (Critic-A nit b):** the hero CTA and the proof beat must target **one**
+    canonical anchor. Copy currently has `#proof` (hero) vs `#timeline` (proof beat) — **canonical =
+    `#proof`** on the proof `<section>`; "View the commits" (hero + inline) links to `#proof`. To be
+    locked with Engineer + Copywriter directly so no dead/duplicate anchor ships.
 - **§6 honesty discipline — binding on the visuals:** the timeline is framed strictly as proof of
   **role-separated work** (what commit *subjects* show), **never** as proof of distinct *authorship*.
   Section header + caption say "role-prefixed commits" / "who did what by role", not "authored by N

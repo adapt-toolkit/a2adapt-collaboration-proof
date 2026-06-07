@@ -10,7 +10,7 @@
   --panel-2: #0a0f16;
   --fg: #e7eef6;
   --muted: #8b98a8;
-  --faint: #5b6675;
+  --faint: #737e8d; /* dimmest TEXT tier — ~4.7:1 on --bg, passes WCAG AA normal text */
   --border: #1a212c;
   --border-soft: #141a23;
 
@@ -25,7 +25,7 @@
   --id-Coordinator: #7c9cff;
   --id-Researcher: #5bd0e6;
   --id-Sales: #e6b85b;
-  --id-Designer: #2ee6a6;
+  --id-Designer: #d98fcf;
   --id-Engineer: #9d8bff;
   --id-Copywriter: #ff9e7a;
   --id-Auditor: #ff7a93;
