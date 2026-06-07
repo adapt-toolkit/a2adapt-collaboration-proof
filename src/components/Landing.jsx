@@ -49,8 +49,10 @@ function TranscriptWindow() {
               <IdentityTag id={line.from} />
               <span className="arrow">→</span>
               <IdentityTag id={line.to} />
+              {line.at && <span className="msg-time">{line.at}</span>}
             </div>
             <p className="msg-text">{line.text}</p>
+            {line.enc && <div className="msg-payload">{line.enc}</div>}
           </div>
         ))}
         <div className="terminal-caret">
