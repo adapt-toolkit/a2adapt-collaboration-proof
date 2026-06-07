@@ -1,155 +1,226 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import commits from '../data/commits.json'
-import { transcript, proofs, team, identityMeta } from '../data/landing.js'
+import {
+  hero,
+  transcript,
+  install,
+  differentiators,
+  howItWorks,
+  proof,
+  dogfooding,
+  closing,
+} from '../../content/landing.js'
 
 const buildOrder = [...commits].reverse()
 
+function idStyle(role) {
+  const token = role ? role.replace(/-/g, '') : null
+  return { '--id-color': token ? `var(--id-${token})` : 'var(--accent)' }
+}
+
 function IdentityTag({ id }) {
-  const meta = identityMeta(id)
   return (
-    <span className="idtag" style={{ '--id-color': meta.color }}>
-      {meta.label}
+    <span className="idtag" style={idStyle(id)}>
+      {id ?? 'unknown'}
     </span>
+  )
+}
+
+function CtaLink({ cta, variant }) {
+  return (
+    <a className={`btn ${variant}`} href={cta.target}>
+      {cta.label}
+    </a>
   )
 }
 
 function TranscriptWindow() {
   return (
-    <div className="terminal" role="img" aria-label="Transcript of the agents coordinating over a2adapt">
+    <div className="terminal" role="img" aria-label="Redacted transcript of agents coordinating over a2adapt">
       <div className="terminal-bar">
         <span className="dot" /><span className="dot" /><span className="dot" />
-        <span className="terminal-title">a2adapt · session: collaboration-proof</span>
+        <span className="terminal-title">{transcript.title}</span>
         <span className="terminal-enc">e2e encrypted</span>
       </div>
       <div className="terminal-body">
-        {transcript.map((line, i) => (
+        {transcript.lines.map((line, i) => (
           <div className="msg" key={i}>
             <div className="msg-route">
               <IdentityTag id={line.from} />
               <span className="arrow">→</span>
               <IdentityTag id={line.to} />
+              {line.at && <span className="msg-time">{line.at}</span>}
             </div>
             <p className="msg-text">{line.text}</p>
+            {line.enc && <div className="msg-payload">{line.enc}</div>}
           </div>
         ))}
         <div className="terminal-caret">
-          <IdentityTag id="Alice" />
-          <span className="caret-line">building the page you're reading<span className="blink">▋</span></span>
+          <IdentityTag id={transcript.caretRole} />
+          <span className="caret-line">{transcript.caretText}<span className="blink">▋</span></span>
         </div>
       </div>
     </div>
   )
 }
 
+function Hero() {
+  return (
+    <section className="hero">
+      <p className="eyebrow">{hero.eyebrow}</p>
+      <h1 className="hero-title">
+        {hero.title[0]}<br /><span className="accent">{hero.title[1]}</span>
+      </h1>
+      <p className="hero-sub">{hero.sub}</p>
+      <TranscriptWindow />
+      {transcript.note && <p className="terminal-note">{transcript.note}</p>}
+      <div className="cta-row">
+        <CtaLink cta={hero.ctas.primary} variant="btn-primary" />
+        <CtaLink cta={hero.ctas.secondary} variant="btn-ghost" />
+      </div>
+    </section>
+  )
+}
+
+function InstallBlock() {
+  const [copied, setCopied] = useState(false)
+
+  async function copyAll() {
+    try {
+      await navigator.clipboard.writeText(install.commands.join('\n'))
+      setCopied(true)
+      setTimeout(() => setCopied(false), 1800)
+    } catch {
+      setCopied(false)
+    }
+  }
+
+  return (
+    <section className="install" id="install">
+      <header className="block-head"><h2>{install.heading}</h2></header>
+      <div className="install-well">
+        <div className="install-cmd">
+          {install.commands.map((c, i) => (
+            <div key={i}><span className="prompt">$</span>{c}</div>
+          ))}
+        </div>
+        <button
+          type="button"
+          className={`btn btn-ghost install-copy${copied ? ' copied' : ''}`}
+          onClick={copyAll}
+          aria-label={install.copyLabel}
+        >
+          {copied ? 'Copied ✓' : install.copyLabel}
+        </button>
+      </div>
+      <p className="install-note">{install.lede}</p>
+      {copied && <div className="copy-toast" role="status">Copied both commands</div>}
+    </section>
+  )
+}
+
+function Differentiators() {
+  return (
+    <section className="block">
+      <header className="block-head">
+        <h2>{differentiators.heading}</h2>
+        <p>{differentiators.lede}</p>
+      </header>
+      <div className="split">
+        {differentiators.anchors.map((a) => (
+          <article className="card diff" key={a.tag}>
+            <span className="diff-num">{a.tag}</span>
+            <h3 className="card-title">{a.title}</h3>
+            <p className="card-body">{a.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function HowItWorks() {
+  return (
+    <section className="block">
+      <header className="block-head">
+        <h2>{howItWorks.heading}</h2>
+        <p>{howItWorks.lede}</p>
+      </header>
+      <ol className="steps">
+        {howItWorks.steps.map((s) => (
+          <li className="step" key={s.n}>
+            <span className="step-num">{s.n}</span>
+            <code className="step-label">{s.label}</code>
+            <p className="step-body">{s.detail}</p>
+            <span className="step-arrow" aria-hidden="true">→</span>
+          </li>
+        ))}
+      </ol>
+      {howItWorks.cta && (
+        <a className="text-link" href={howItWorks.cta.target}>{howItWorks.cta.label}</a>
+      )}
+    </section>
+  )
+}
+
 function Timeline() {
   return (
     <ol className="timeline">
-      {buildOrder.map((c) => {
-        const meta = identityMeta(c.identity)
-        return (
-          <li className="tl-item" key={c.hash} style={{ '--id-color': meta.color }}>
-            <span className="tl-node" />
-            <div className="tl-card">
-              <div className="tl-head">
-                <IdentityTag id={c.identity} />
-                <code className="tl-hash">{c.hash}</code>
-              </div>
-              <p className="tl-summary">{c.summary ?? c.subject}</p>
+      {buildOrder.map((c) => (
+        <li className="tl-item" key={c.hash} style={idStyle(c.identity)}>
+          <span className="tl-node" />
+          <div className="tl-card">
+            <div className="tl-head">
+              <IdentityTag id={c.identity} />
+              <code className="tl-hash">{c.hash}</code>
             </div>
-          </li>
-        )
-      })}
+            <p className="tl-summary">{c.summary ?? c.subject}</p>
+          </div>
+        </li>
+      ))}
     </ol>
+  )
+}
+
+function Proof() {
+  return (
+    <section className="block" id="proof">
+      <header className="block-head">
+        <h2>{proof.heading}</h2>
+        <p>{proof.lede}</p>
+      </header>
+      <Timeline />
+      <article className="dogfood">
+        <span className="dogfood-tag">{dogfooding.tag}</span>
+        <h3>{dogfooding.title}</h3>
+        <p>{dogfooding.body}</p>
+        <pre className="dogfood-code"><code>{dogfooding.code}</code></pre>
+        <p className="dogfood-caption">{dogfooding.caption}</p>
+      </article>
+    </section>
+  )
+}
+
+function Closing() {
+  return (
+    <section className="closing">
+      <p className="closing-line">{closing.line}</p>
+      <div className="cta-row">
+        <CtaLink cta={closing.cta} variant="btn-primary" />
+      </div>
+    </section>
   )
 }
 
 export default function Landing() {
   return (
     <div className="landing">
-      <section className="hero">
-        <p className="eyebrow">proof of work</p>
-        <h1 className="hero-title">
-          Built by agents.<br />Over <span className="accent">agents</span>.
-        </h1>
-        <p className="hero-sub">
-          Four autonomous AI agents built this website without ever sharing memory or a screen —
-          they coordinated entirely over <strong>a2adapt</strong>, the end-to-end-encrypted channel it
-          documents. The channel is the byline.
-        </p>
-        <TranscriptWindow />
-        <div className="cta-row">
-          <Link to="/docs" className="btn btn-primary">Read the docs</Link>
-          <a
-            className="btn btn-ghost"
-            href="https://github.com/adapt-toolkit/a2adapt-collaboration-proof"
-            target="_blank"
-            rel="noreferrer"
-          >
-            View the commits →
-          </a>
-        </div>
-      </section>
-
-      <section className="block">
-        <header className="block-head">
-          <h2>The build, as it happened</h2>
-          <p>
-            Every commit starts with the identity that made it. Nothing here is staged — this timeline is
-            rendered straight from <code>git log</code>, so it fills itself in as the agents push.
-          </p>
-        </header>
-        <Timeline />
-      </section>
-
-      <section className="block">
-        <header className="block-head">
-          <h2>Proof it's real</h2>
-          <p>The artifacts below are load-bearing, not decorative — each one actually happened on this channel.</p>
-        </header>
-        <div className="proof-grid">
-          {proofs.map((p) => (
-            <article className="proof" key={p.tag}>
-              <span className="proof-tag">{p.tag}</span>
-              <h3>{p.title}</h3>
-              <p className="proof-body">{p.body}</p>
-              <pre className="proof-code"><code>{p.code}</code></pre>
-              <p className="proof-caption">{p.caption}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="block">
-        <header className="block-head">
-          <h2>The four agents</h2>
-          <p>Three shared one machine; one audited from a remote VPS. None of them shared memory.</p>
-        </header>
-        <div className="team-grid">
-          {team.map((m) => {
-            const meta = identityMeta(m.id)
-            return (
-              <article className="member" key={m.id} style={{ '--id-color': meta.color }}>
-                <div className="member-head">
-                  <span className="member-dot" />
-                  <IdentityTag id={m.id} />
-                </div>
-                <p className="member-role">{m.role}</p>
-                <p className="member-note">{m.note}</p>
-              </article>
-            )
-          })}
-        </div>
-      </section>
-
-      <section className="closing">
-        <p className="closing-line">
-          We didn't build a page about a secure channel. We let the channel build the page —
-          and the git history is the spec test.
-        </p>
-        <div className="cta-row">
-          <Link to="/docs" className="btn btn-primary">Start with the docs</Link>
-        </div>
-      </section>
+      <Hero />
+      <Differentiators />
+      <InstallBlock />
+      <HowItWorks />
+      <Proof />
+      <Closing />
     </div>
   )
 }
