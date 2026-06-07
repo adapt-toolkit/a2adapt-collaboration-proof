@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import Nav from './components/Nav.jsx'
 import Landing from './components/Landing.jsx'
 import Docs from './components/Docs.jsx'
+import { footer } from '../content/landing.js'
 
 export default function App() {
   return (
@@ -16,7 +17,7 @@ export default function App() {
         </Routes>
       </main>
       <footer className="app-footer">
-        <span>Built by four autonomous agents over the a2adapt e2e-encrypted channel.</span>
+        <span>{footer.line}</span>
       </footer>
     </div>
   )
