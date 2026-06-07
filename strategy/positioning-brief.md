@@ -4,8 +4,9 @@
 > Gate: **Critic-A + Critic-B** (dual-approval) + Sales sign-off. Once approved,
 > this file is **the contract** — every Phase-2 artifact is judged against it.
 >
-> **Status:** v4 — grounded in Researcher dossiers 01–04; evidence discipline applied
-> per Critic-A's binding condition; CTA-reachability blocker fixed per Critic-B (§4/§6).
+> **Status:** v5 — Researcher dossiers 01–04; Critic-A binding evidence-discipline applied;
+> Critic-B CTA-reachability blocker fixed (§4/§6); Critic-A §6 self-refutation blocker fixed
+> (author attribution = hard ship-blocker + defined fallback). Re-submitted for A∧B.
 >
 > **Evidence discipline (Critic-A binding condition — applies to every Phase-2 artifact):**
 > On-page **published claims rest only on a2adapt's own verifiable mechanics** (self-
@@ -129,11 +130,12 @@ secondary buyer; #3 is distribution, not a buyer.
   conversion mechanic on the page; design and copy must treat it as such.
 - **Why that action:** an install is a real adopter, not a vanity metric, and it puts the
   product in their hands where it sells itself.
-- **Secondary action (only one):** **View the commits** — the role-prefixed git log
-  proving the site was built over a2adapt. The skeptic's low-commitment path that turns
-  doubt into credibility before they install. *(Author re-attribution is being finalized
-  and is Auditor-gated — see §6; the brief doesn't promise byte-clean author stamps until
-  Auditor signs off.)*
+- **Secondary action (only one):** **View the commits** — the role-prefixed git-log
+  timeline proving the site was built over a2adapt. The skeptic's low-commitment path that
+  turns doubt into credibility before they install. **Gated by the §6 hard ship-blocker:**
+  this CTA ships only once author attribution is clean end-to-end; otherwise it is replaced
+  by the §6 fallback (a path that doesn't invite authorship inspection). The brief never
+  presents a one-human-author log as multi-party proof.
 - **BINDING — CTA reachability (both conversion destinations must work for a logged-out
   visitor; Auditor-gated, Phase-3 HTTP-200/claim-true check; per Critic-B):**
   - **(i) Install destination:** the marketplace repo `adapt-toolkit/a2adapt` **must be
@@ -165,8 +167,10 @@ secondary buyer; #3 is distribution, not a buyer.
    invite → encrypted channel → message → wake on reply* — so they see a few MCP calls,
    not a framework to learn. Problem-first / bold-statement storytelling, not a function
    list (Dossier 03).
-4. **Fourth beat — the proof, in full:** the role-prefixed git-log timeline as the
-   testimonial wall; the dogfooding anecdote. (Author-attribution claims gated by Auditor — §6.)
+4. **Fourth beat — the proof, in full:** the git-log timeline as the testimonial wall; the
+   dogfooding anecdote. **Subject to the §6 hard ship-blocker** — the git-log beat ships
+   only with clean end-to-end author attribution, else it reframes to transcript +
+   dogfooding only (both true regardless of authorship).
 - **CTA placement:** primary **Install** in the hero and again in a final contrasting CTA
   block (one line, one button — Dossier 03); secondary **View the commits** beside it in
   the hero and inline at the proof beat.
@@ -175,23 +179,41 @@ secondary buyer; #3 is distribution, not a buyer.
 
 - **How "built by agents over a2adapt, git-is-the-receipt" becomes buyer credibility (not
   a party trick):** the buyer's deepest infra fear is *"is this real and will it hold up?"*
-  Our answer is uniquely strong and **unfakeable**: a full team of autonomous agents
-  coordinated an entire shipped site over this exact channel, the work role-prefixed
-  through public git history. That's not a testimonial — it's an auditable load test. **The
-  medium is the proof:** the thing being sold is the thing that built the page selling it.
-  No protocol vendor's landing page can say this (Dossier 02) — it's also the moat.
-- **Attribution status (honesty — Researcher Dossier 02 audit):** commit **subjects** are
-  role-prefixed end-to-end today (`Coordinator:`/`Researcher:`/…); commit **authors** are
-  not yet fully re-attributed (a worktree-config artifact, being corrected during
-  integration). **The brief therefore claims only what is true now — role-prefixed history
-  — and does not promise byte-clean author stamps until the Auditor's Phase-3 gate signs
-  it off.** Copy/design must phrase the proof beat to that standard.
+  The intended answer is uniquely strong and **unfakeable**: a full team of autonomous
+  agents coordinated an entire shipped site over this exact channel. That's not a
+  testimonial — it's an auditable load test. **The medium is the proof:** the thing being
+  sold is the thing that built the page selling it. No protocol vendor's landing page can
+  say this (Dossier 02) — it's also the moat. **But this proof is only as strong as what a
+  skeptic actually finds when they inspect — see the hard precondition below.**
+- **Attribution status — TRUE TODAY vs PENDING (honesty, verified by Researcher Dossier 02
+  + Critic-A's `git log --format='%an'` audit):**
+  - **True today:** commit **subjects** are role-prefixed end-to-end (`Coordinator:` /
+    `Researcher:` / `Bob:` …), demonstrating role-separated work.
+  - **NOT true today:** end-to-end **author** attribution. The bulk of the original build
+    is authored by a single human across the role-subject commits; only recent commits
+    carry correct per-role authors. **At the author level it is, right now, one author in
+    hats.** The brief does **not** claim multi-party *authorship* as currently true.
+- **HARD SHIP-BLOCKER (binding precondition; Auditor-gated, Phase-3) — the proof must not
+  self-refute (per Critic-A):** A skeptic on the "View the commits" path inspects
+  **authors** (`%an`), not subjects. Presenting a one-human-author history as "built by a
+  team" turns our strongest proof into our most visible refutation. Therefore:
+  1. **Clean end-to-end author re-attribution is a hard precondition** for BOTH the
+     git-log proof beat **and** the "View the commits" CTA. Neither ships against
+     one-human-author history under any branch. (Re-attribution mechanism = Coordinator /
+     Auditor; this contract only pins the dependency.)
+  2. **Defined fallback if clean author attribution can't be achieved before ship:** the
+     proof beat **reframes to transcript + dogfooding only** (which are true regardless of
+     authorship), and the secondary CTA **changes to a path that does not invite authorship
+     inspection** (e.g. "Read the walkthrough" / the on-page transcript) — never a git log.
 - **What proof artifacts the page shows and what each proves:**
-  - **Role-prefixed git-log timeline** = our **testimonial wall** (we have no logos/stars
-    yet; this is honest social proof, Dossier 03). Proves *real multi-party coordination
-    happened* — not one author in hats. **This IS the "View the commits" destination, and
-    it is rendered on-page from committed log data** (no external repo dependency) so the
-    proof is self-contained and can never 403 for a skeptic (binding, §4 / Critic-B).
+  - **Role-prefixed git-log timeline** = our intended **testimonial wall** (we have no
+    logos/stars yet; honest social proof, Dossier 03). It is the **"View the commits"
+    destination, rendered on-page from committed log data** (no external repo dependency)
+    so it can never 403 (binding, §4 / Critic-B). **Conditioned on the hard ship-blocker
+    above:** it ships only once authors are cleanly per-role end-to-end — and when it
+    ships, it must render the same attribution a skeptic would find in `git log` (no
+    subject-only sleight-of-hand). If the precondition isn't met, this beat is replaced per
+    the fallback.
   - **The redacted agent-to-agent transcript** (hero) → coordination over the channel is
     *legible and ordinary*, lowering the "this looks hard" barrier.
   - **The dogfooding anecdote** (the team's invite blob kept getting mangled by copy-paste;
@@ -250,6 +272,6 @@ secondary buyer; #3 is distribution, not a buyer.
 ---
 
 ### Approvals (required before Phase 2)
-- [x] Sales sign-off — v4: Researcher dossiers 01–04; A2A naming hazard resolved (Coordinator); Critic-A binding evidence-discipline applied (market stats context-only; proof claims role-prefixed until Auditor); Critic-B blocker fixed — both CTA destinations pinned publicly reachable, "View the commits" = on-page self-contained git-log timeline (Auditor-gated HTTP-200).
+- [x] Sales sign-off — v5: Researcher dossiers 01–04; A2A naming hazard resolved (Coordinator); Critic-A binding evidence-discipline applied; Critic-B CTA-reachability blocker fixed (both destinations pinned reachable, "View the commits" = on-page self-contained git-log timeline, Auditor-gated HTTP-200); Critic-A §6 self-refutation blocker fixed (clean end-to-end author attribution = hard ship-blocker for the git-log beat + "View the commits" CTA, with defined transcript+dogfooding fallback).
 - [ ] Critic-A `APPROVE`
 - [ ] Critic-B `APPROVE`
