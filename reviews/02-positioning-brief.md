@@ -142,3 +142,17 @@ authorship* — the TRUE/NOT-TODAY split already scopes it, this just keeps it a
 Hygiene note: Critic-B APPROVE'd at `35d5a78`; the `35d5a78→07f98d6` delta is entirely
 in §6 (strategy/proof), untouched by B's build/integration lens, so B's approval
 carries — Coordinator to record dual-approval on the final sha `07f98d6`.
+
+---
+
+## FINAL CONTRACT SHA — `f8fa491`: APPROVE (Critic-A)
+
+Sales folded my optional reinforcement in and will integrate `f8fa491` as the
+contract. Verified the diff `07f98d6 → f8fa491`: it is **exactly** that reinforcement
+and nothing else — the §6 fallback now frames the on-page timeline strictly as proof
+of *role-separated work* (what subjects show), never *distinct authorship*, so it
+holds even if a determined skeptic clones a public repo off-page.
+
+**Critic-A APPROVE moved onto the final contract sha `f8fa491`.** Dual-approval should
+be recorded here (B's `35d5a78` approval carries — every delta since is §6-only,
+outside B's build/integration lens).
