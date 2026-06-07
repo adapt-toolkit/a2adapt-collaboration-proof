@@ -4,8 +4,8 @@
 > Gate: **Critic-A + Critic-B** (dual-approval) + Sales sign-off. Once approved,
 > this file is **the contract** — every Phase-2 artifact is judged against it.
 >
-> **Status:** v3 — grounded in Researcher dossiers 01–04; evidence discipline applied
-> per Critic-A's binding gate condition. Ready for the Critic gate.
+> **Status:** v4 — grounded in Researcher dossiers 01–04; evidence discipline applied
+> per Critic-A's binding condition; CTA-reachability blocker fixed per Critic-B (§4/§6).
 >
 > **Evidence discipline (Critic-A binding condition — applies to every Phase-2 artifact):**
 > On-page **published claims rest only on a2adapt's own verifiable mechanics** (self-
@@ -122,9 +122,11 @@ secondary buyer; #3 is distribution, not a buyer.
   a2adapt@a2adapt`. For this buyer, install is the highest-intent, lowest-time-to-value
   step: two commands, no signup, no account, MCP tools appear, identity in the next minute.
 - **The conversion lever:** we have **no form** — so our equivalent of the "shorten the
-  form" lever (Dossier 03: 11→4 fields drove +120%) is **making the install command
-  one-click-copy and impossible to miss.** That is the highest-leverage conversion
-  mechanic on the page; design and copy must treat it as such.
+  form" lever (Dossier 03: 11→4 fields drove +120%) is **making the install block
+  one-click-copy and impossible to miss.** Note it's **two commands** (`marketplace add`
+  then `install`); spec for design/copy: a **single copy action that yields the whole
+  block** (both lines), so it's genuinely one click, not two. This is the highest-leverage
+  conversion mechanic on the page; design and copy must treat it as such.
 - **Why that action:** an install is a real adopter, not a vanity metric, and it puts the
   product in their hands where it sells itself.
 - **Secondary action (only one):** **View the commits** — the role-prefixed git log
@@ -132,6 +134,20 @@ secondary buyer; #3 is distribution, not a buyer.
   doubt into credibility before they install. *(Author re-attribution is being finalized
   and is Auditor-gated — see §6; the brief doesn't promise byte-clean author stamps until
   Auditor signs off.)*
+- **BINDING — CTA reachability (both conversion destinations must work for a logged-out
+  visitor; Auditor-gated, Phase-3 HTTP-200/claim-true check; per Critic-B):**
+  - **(i) Install destination:** the marketplace repo `adapt-toolkit/a2adapt` **must be
+    publicly reachable by an anonymous visitor.** If it is private (the org default for
+    this team), the visitor's *first* command fails and primary conversion is dead — the
+    contract forbids shipping in that state. Integration/Auditor must verify public
+    reachability (or substitute the correct public marketplace identifier) before ship.
+  - **(ii) "View the commits" destination — canonical = on-page, zero external dependency:**
+    the secondary CTA resolves to an **on-page git-log timeline rendered from committed log
+    data**, needing no GitHub/repo access at all. This is the *cleaner* choice and the right
+    one for a proof site: the proof is self-contained and can't 403. A public repo link MAY
+    appear additionally, but the proof must NOT depend on a private repo being reachable —
+    a skeptic hitting a 403 actively *disproves* the proof claim. The destination is named
+    here so a faithful Phase-2 build cannot ship a dead button.
 
 ## 5. Message hierarchy (the scroll)
 
@@ -173,7 +189,9 @@ secondary buyer; #3 is distribution, not a buyer.
 - **What proof artifacts the page shows and what each proves:**
   - **Role-prefixed git-log timeline** = our **testimonial wall** (we have no logos/stars
     yet; this is honest social proof, Dossier 03). Proves *real multi-party coordination
-    happened* — not one author in hats. (The "View the commits" destination.)
+    happened* — not one author in hats. **This IS the "View the commits" destination, and
+    it is rendered on-page from committed log data** (no external repo dependency) so the
+    proof is self-contained and can never 403 for a skeptic (binding, §4 / Critic-B).
   - **The redacted agent-to-agent transcript** (hero) → coordination over the channel is
     *legible and ordinary*, lowering the "this looks hard" barrier.
   - **The dogfooding anecdote** (the team's invite blob kept getting mangled by copy-paste;
@@ -215,7 +233,9 @@ secondary buyer; #3 is distribution, not a buyer.
 - **How we'll know the page works:** the visitor understands **"this is the private,
   account-less, encrypted channel my Claude Code agents talk over — distinct from A2A/MCP,
   and proven by the way this very page was built"** and **installs the plugin** (or, if
-  skeptical, views the commits and leaves convinced it's real).
+  skeptical, views the commits and leaves convinced it's real). **Success is qualitative
+  by design** — there is no form, no analytics, no tracking, and adding any would
+  contradict the privacy ethos we're selling; downstream must not bolt on measurement.
 - **Non-goals:**
   - Not a full a2adapt/ADAPT API reference — docs cover mechanics; the landing sells.
   - Not pitching a2adapt as an orchestration framework, an interop standard, or a hosted
@@ -230,6 +250,6 @@ secondary buyer; #3 is distribution, not a buyer.
 ---
 
 ### Approvals (required before Phase 2)
-- [x] Sales sign-off — v3 reflects Researcher dossiers 01–04, resolves the A2A naming hazard per Coordinator's directive, and applies Critic-A's binding evidence-discipline condition (market stats context-only; proof claims limited to role-prefixed history until Auditor signs off author attribution).
+- [x] Sales sign-off — v4: Researcher dossiers 01–04; A2A naming hazard resolved (Coordinator); Critic-A binding evidence-discipline applied (market stats context-only; proof claims role-prefixed until Auditor); Critic-B blocker fixed — both CTA destinations pinned publicly reachable, "View the commits" = on-page self-contained git-log timeline (Auditor-gated HTTP-200).
 - [ ] Critic-A `APPROVE`
 - [ ] Critic-B `APPROVE`
