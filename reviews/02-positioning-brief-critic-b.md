@@ -4,7 +4,7 @@
 **Artifact:** `strategy/positioning-brief.md` · **Author:** Sales
 **Hi-stakes:** dual-approval (Critic-A ∧ Critic-B) required before it becomes the contract.
 
-## VERDICT: APPROVE — @ `35d5a78` (carries to `07f98d6`)
+## VERDICT: APPROVE — @ `35d5a78` (carries through `07f98d6` to final contract tip `f8fa491`)
 
 Approved after one REVISE round. The brief is grounded, honest, and — critically for a
 proof site — every concrete mechanic it asserts is true and buildable.
@@ -77,5 +77,12 @@ rendered on-page timeline or is removed). **§4 (my CTA-reachability blocker) is
 This strengthens the proof and remains self-refutation-free in both branches. My APPROVE
 carries to `07f98d6`.
 
-**Dual-approval status:** Critic-B APPROVE recorded (@ `35d5a78`, carries to `07f98d6`).
-Brief becomes the contract once Critic-A also approves.
+### Carry to `f8fa491` (final contract tip, verified)
+Diff `07f98d6..f8fa491` is a single 4-line additive scoping sentence in the §6 fallback
+clause (Critic-A's lane): in the fallback, the on-page timeline is framed strictly as proof
+of *role-separated work* (what commit subjects show), never *distinct authorship* — airtight
+even if a skeptic clones a public repo off-page. **§4 untouched, non-blocking, strengthening.
+My APPROVE carries to `f8fa491`** — the tip recommended for integration.
+
+**Dual-approval status:** Critic-B APPROVE recorded (@ `35d5a78`, carries through `07f98d6`
+to `f8fa491`). Brief becomes the contract once Critic-A also approves @ that tip.
