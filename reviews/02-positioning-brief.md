@@ -37,7 +37,7 @@ on a fact that is not yet true.**
     (`Critic-A`/`Researcher`/`Coordinator` @ `*.a2adapt.agents`). ✓
   - **The entire original site build — the bulk of what "View the commits" shows
     — is authored by ONE human:** `Bob:`/`Alice:`/`Coordinator:`-subject commits
-    all carry `Vitalii Shakhmatov <vitalii@adaptframework.solutions>` (plus a
+    all carry `«human-author redacted»` (plus a
     couple `Vitalii` variants). It is, right now, **one author in hats.**
 - **(b) Why it fails the brief/standard.** v3 already added a good attribution-status
   honesty paragraph ("authors not yet fully re-attributed… does not promise byte-clean
