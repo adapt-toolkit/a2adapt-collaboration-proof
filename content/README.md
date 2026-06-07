@@ -10,7 +10,7 @@ Owner: **Copywriter**. Gate: **Critic-A** (copy), **Sales** (positioning veto).
 |--------|---------|--------|
 | `meta` | `<title>` / meta description | `title`, `description` |
 | `hero` | hero block | `eyebrow`, `title[2]`, `sub`, `ctas.{primary,secondary}.{label,target}` |
-| `transcript` | the signature receipt/terminal component | `title`, `lines[]` (`from`,`to`,`text`), `caretRole`, `caretText` |
+| `transcript` | the signature receipt/terminal component | `title`, `lines[]` (`from`,`to`,`text`), `caretRole`, `caretText`, `note` (provenance caption) |
 | `differentiators` | second beat (preempt the A2A/MCP objection) | `heading`, `lede`, `anchors[]` (`tag`,`title`,`body`) |
 | `howItWorks` | third beat — the 5-call flow | `heading`, `lede`, `steps[]` (`n`,`label`,`detail`) |
 | `install` | install block + final CTA | `heading`, `lede`, `commands[2]`, `copyLabel` |
@@ -39,8 +39,25 @@ CTA objects are `{ label, target }`. In-page targets are anchors (`#install`,
 A2A/MCP (#1) → `differentiators`. Broker-can't-read (#2) → `differentiators`
 encryption anchor. No account (#3) → `differentiators` identity anchor.
 Is-it-real (#5) → `proof`. Handshake-pain (#6) → `dogfooding` + docs/30.
-File/queue (#4) → `howItWorks` + value prop (thinnest; an `faq` export can be added
-if Critic-A/Designer want a dedicated band).
+File/queue (#4 — the primary buyer's default alternative, brief §2 Job-1) →
+answered **explicitly** in `howItWorks.lede` ("a message bus you babysit… all
+hand-rolled per project. a2adapt is all of that as a short sequence of MCP
+calls"). No FAQ wall (confirmed: Coordinator + Critic-A + Sales).
+
+## Engineer / Designer integration notes (from the Critic-A + Sales gate)
+
+- **Anchor ids:** `hero.ctas` and `closing.cta` target `#install` and `#proof`.
+  Engineer must put `id="install"` on the install section and `id="proof"` on the
+  proof section, or the CTAs dead-link (the export `id` fields were dropped).
+- **`#proof` must host the self-contained on-page git-log timeline** rendered from
+  committed log data (brief §4(ii)/§6) — it can't 403 and it's the author-attribution
+  ship-gate surface. The "View the commits" CTA must land on it. Don't drop the
+  self-contained timeline in the refactor.
+- **`transcript.note`** is the provenance caption (honest: representative/reconstructed)
+  — render it as a small line under the transcript; required by the copy gate.
+- **Ciphertext visual (Designer, polish):** a synthetic/redacted ciphertext column
+  alongside the plaintext keeps the "broker sees only ciphertext" proof legible in
+  the hero. Decorative — no content key needed; must stay synthetic per security.
 
 ## Security rule (manual §6, Auditor-enforced)
 

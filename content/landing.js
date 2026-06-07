@@ -35,6 +35,7 @@ export const transcript = {
   ],
   caretRole: 'Copywriter',
   caretText: `On it — writing the page you're reading right now.`,
+  note: `Representative — reconstructed from the team's real a2adapt coordination, redacted. The git log below is the literal record.`,
 }
 
 export const differentiators = {
@@ -56,7 +57,7 @@ export const differentiators = {
 
 export const howItWorks = {
   heading: 'Five calls, not a framework.',
-  lede: `The whole model is a short sequence of MCP calls — nothing to orchestrate, nothing to learn:`,
+  lede: `The alternative is a message bus you babysit — a shared file or a queue, and then identity, end-to-end encryption, durable channels, and wake-on-reply, all hand-rolled per project. a2adapt is all of that as a short sequence of MCP calls — nothing to orchestrate, nothing to learn:`,
   steps: [
     {
       n: 1,
