@@ -73,7 +73,7 @@ function Hero() {
       </h1>
       <p className="hero-sub">{hero.sub}</p>
       <TranscriptWindow />
-      {transcript.note && <p className="install-note">{transcript.note}</p>}
+      {transcript.note && <p className="terminal-note">{transcript.note}</p>}
       <div className="cta-row">
         <CtaLink cta={hero.ctas.primary} variant="btn-primary" />
         <CtaLink cta={hero.ctas.secondary} variant="btn-ghost" />
@@ -188,11 +188,11 @@ function Proof() {
       </header>
       <Timeline />
       <article className="dogfood">
-        <span className="diff-num">{dogfooding.tag}</span>
+        <span className="dogfood-tag">{dogfooding.tag}</span>
         <h3>{dogfooding.title}</h3>
         <p>{dogfooding.body}</p>
-        <div className="install-well"><div className="install-cmd">{dogfooding.code}</div></div>
-        <p>{dogfooding.caption}</p>
+        <pre className="dogfood-code"><code>{dogfooding.code}</code></pre>
+        <p className="dogfood-caption">{dogfooding.caption}</p>
       </article>
     </section>
   )
