@@ -1,34 +1,45 @@
 import { useState } from 'react'
 import commits from '../data/commits.json'
-import { roleMeta } from '../content/identities.js'
 import {
   hero,
   transcript,
+  install,
   differentiators,
   howItWorks,
-  install,
   proof,
   dogfooding,
   closing,
-} from '../content/landing.js'
+} from '../../content/landing.js'
 
 const buildOrder = [...commits].reverse()
 
+function idStyle(role) {
+  const token = role ? role.replace(/-/g, '') : null
+  return { '--id-color': token ? `var(--id-${token})` : 'var(--accent)' }
+}
+
 function IdentityTag({ id }) {
-  const meta = roleMeta(id)
   return (
-    <span className="idtag" style={{ '--id-color': meta.color }}>
-      {meta.label}
+    <span className="idtag" style={idStyle(id)}>
+      {id ?? 'unknown'}
     </span>
+  )
+}
+
+function CtaLink({ cta, variant }) {
+  return (
+    <a className={`btn ${variant}`} href={cta.target}>
+      {cta.label}
+    </a>
   )
 }
 
 function TranscriptWindow() {
   return (
-    <div className="terminal" role="img" aria-label="Transcript of the agents coordinating over a2adapt">
+    <div className="terminal" role="img" aria-label="Redacted transcript of agents coordinating over a2adapt">
       <div className="terminal-bar">
         <span className="dot" /><span className="dot" /><span className="dot" />
-        <span className="terminal-title">a2adapt · {transcript.title}</span>
+        <span className="terminal-title">{transcript.title}</span>
         <span className="terminal-enc">e2e encrypted</span>
       </div>
       <div className="terminal-body">
@@ -51,14 +62,6 @@ function TranscriptWindow() {
   )
 }
 
-function CtaLink({ cta, variant }) {
-  return (
-    <a className={`btn ${variant}`} href={cta.target}>
-      {cta.label}
-    </a>
-  )
-}
-
 function Hero() {
   return (
     <section className="hero">
@@ -76,6 +79,43 @@ function Hero() {
   )
 }
 
+function InstallBlock() {
+  const [copied, setCopied] = useState(false)
+
+  async function copyAll() {
+    try {
+      await navigator.clipboard.writeText(install.commands.join('\n'))
+      setCopied(true)
+      setTimeout(() => setCopied(false), 1800)
+    } catch {
+      setCopied(false)
+    }
+  }
+
+  return (
+    <section className="install" id="install">
+      <header className="block-head"><h2>{install.heading}</h2></header>
+      <div className="install-well">
+        <div className="install-cmd">
+          {install.commands.map((c, i) => (
+            <div key={i}><span className="prompt">$</span>{c}</div>
+          ))}
+        </div>
+        <button
+          type="button"
+          className={`btn btn-ghost install-copy${copied ? ' copied' : ''}`}
+          onClick={copyAll}
+          aria-label={install.copyLabel}
+        >
+          {copied ? 'Copied ✓' : install.copyLabel}
+        </button>
+      </div>
+      <p className="install-note">{install.lede}</p>
+      {copied && <div className="copy-toast" role="status">Copied both commands</div>}
+    </section>
+  )
+}
+
 function Differentiators() {
   return (
     <section className="block">
@@ -83,12 +123,12 @@ function Differentiators() {
         <h2>{differentiators.heading}</h2>
         <p>{differentiators.lede}</p>
       </header>
-      <div className="diff-grid">
+      <div className="split">
         {differentiators.anchors.map((a) => (
-          <article className="diff" key={a.tag}>
-            <span className="proof-tag">{a.tag}</span>
-            <h3>{a.title}</h3>
-            <p className="diff-body">{a.body}</p>
+          <article className="card diff" key={a.tag}>
+            <span className="diff-num">{a.tag}</span>
+            <h3 className="card-title">{a.title}</h3>
+            <p className="card-body">{a.body}</p>
           </article>
         ))}
       </div>
@@ -106,11 +146,10 @@ function HowItWorks() {
       <ol className="steps">
         {howItWorks.steps.map((s) => (
           <li className="step" key={s.n}>
-            <span className="step-n">{s.n}</span>
-            <div className="step-body">
-              <code className="step-label">{s.label}</code>
-              <span className="step-detail">{s.detail}</span>
-            </div>
+            <span className="step-num">{s.n}</span>
+            <code className="step-label">{s.label}</code>
+            <p className="step-body">{s.detail}</p>
+            <span className="step-arrow" aria-hidden="true">→</span>
           </li>
         ))}
       </ol>
@@ -118,72 +157,39 @@ function HowItWorks() {
   )
 }
 
-function InstallBlock() {
-  const [copied, setCopied] = useState(false)
-  const block = install.commands.join('\n')
-
-  async function copyAll() {
-    try {
-      await navigator.clipboard.writeText(block)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 1800)
-    } catch {
-      setCopied(false)
-    }
-  }
-
-  return (
-    <section className="block install" id="install">
-      <header className="block-head">
-        <h2>{install.heading}</h2>
-        <p>{install.lede}</p>
-      </header>
-      <div className="install-block">
-        <pre className="install-code"><code>{install.commands.map((c) => `$ ${c}`).join('\n')}</code></pre>
-        <button type="button" className="btn btn-primary install-copy" onClick={copyAll}>
-          {copied ? 'Copied ✓' : install.copyLabel}
-        </button>
-      </div>
-    </section>
-  )
-}
-
 function Timeline() {
   return (
-    <ol className="timeline">
-      {buildOrder.map((c) => {
-        const meta = roleMeta(c.identity)
-        return (
-          <li className="tl-item" key={c.hash} style={{ '--id-color': meta.color }}>
-            <span className="tl-node" />
-            <div className="tl-card">
-              <div className="tl-head">
-                <IdentityTag id={c.identity} />
-                <code className="tl-hash">{c.hash}</code>
-              </div>
-              <p className="tl-summary">{c.summary ?? c.subject}</p>
+    <ol className="timeline" id="timeline">
+      {buildOrder.map((c) => (
+        <li className="tl-item" key={c.hash} style={idStyle(c.identity)}>
+          <span className="tl-node" />
+          <div className="tl-card">
+            <div className="tl-head">
+              <IdentityTag id={c.identity} />
+              <code className="tl-hash">{c.hash}</code>
             </div>
-          </li>
-        )
-      })}
+            <p className="tl-summary">{c.summary ?? c.subject}</p>
+          </div>
+        </li>
+      ))}
     </ol>
   )
 }
 
 function Proof() {
   return (
-    <section className="block" id="timeline">
+    <section className="block" id="proof">
       <header className="block-head">
         <h2>{proof.heading}</h2>
         <p>{proof.lede}</p>
       </header>
       <Timeline />
-      <article className="proof">
-        <span className="proof-tag">{dogfooding.tag}</span>
+      <article className="dogfood">
+        <span className="diff-num">{dogfooding.tag}</span>
         <h3>{dogfooding.title}</h3>
-        <p className="proof-body">{dogfooding.body}</p>
-        <pre className="proof-code"><code>{dogfooding.code}</code></pre>
-        <p className="proof-caption">{dogfooding.caption}</p>
+        <p>{dogfooding.body}</p>
+        <div className="install-well"><div className="install-cmd">{dogfooding.code}</div></div>
+        <p>{dogfooding.caption}</p>
       </article>
     </section>
   )
@@ -204,10 +210,10 @@ export default function Landing() {
   return (
     <div className="landing">
       <Hero />
+      <InstallBlock />
       <Differentiators />
       <HowItWorks />
       <Proof />
-      <InstallBlock />
       <Closing />
     </div>
   )
