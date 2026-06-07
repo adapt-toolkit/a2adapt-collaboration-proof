@@ -4,7 +4,15 @@
 > Gate: **Critic-A + Critic-B** (dual-approval) + Sales sign-off. Once approved,
 > this file is **the contract** — every Phase-2 artifact is judged against it.
 >
-> **Status:** v2 — grounded in Researcher dossiers 01–04. Ready for the Critic gate.
+> **Status:** v3 — grounded in Researcher dossiers 01–04; evidence discipline applied
+> per Critic-A's binding gate condition. Ready for the Critic gate.
+>
+> **Evidence discipline (Critic-A binding condition — applies to every Phase-2 artifact):**
+> On-page **published claims rest only on a2adapt's own verifiable mechanics** (self-
+> sovereign identity, broker-blind E2E, the real git proof) — **Auditor-gated** in Phase 3.
+> **Third-party market statistics are CONTEXT-ONLY and must NOT appear as published numbers
+> on the page** (sourcing is secondary/directional). Market figures may inform our
+> *strategy*; they may not be *cited as proof* to the buyer.
 
 ---
 
@@ -40,12 +48,14 @@ Three segments (Dossier 01), in priority order. **The page leads to #1**; #2 is 
 secondary buyer; #3 is distribution, not a buyer.
 
 - **PRIMARY buyer/adopter — agent/AI engineers building multi-agent systems on Claude
-  Code.** They wire up Claude Code, MCP servers, and multi-agent workflows *today*. Same
-  population driving MCP adoption (**97M+ monthly MCP SDK downloads, 10,000+ public MCP
-  servers as of Feb 2026** — Dossier 01). a2adapt ships **as a Claude Code plugin**, so
-  install friction for this segment is near-zero — our strongest conversion lever.
+  Code.** They wire up Claude Code, MCP servers, and multi-agent workflows *today*. They
+  are the same, fast-growing population driving MCP's adoption (Dossier 01). a2adapt ships
+  **as a Claude Code plugin**, so install friction for this segment is near-zero — our
+  strongest conversion lever. *[Internal context only: directional market-size figures
+  exist in research but are **CONTEXT-ONLY per Critic-A's binding condition** — they must
+  not ship as published numbers on the page.]*
 - **SECONDARY buyer — security-conscious teams worried about agent identity & data
-  exposure.** Agent identity was a headline topic at **RSAC 2026** (Dossier 01). Their
+  exposure.** Agent identity is a recognized, current security problem (Dossier 01). Their
   lived pain: identity infra was built for humans, so agents get **org-wide API keys**
   and **shared service accounts** instead of scoped, self-owned identity, and traffic
   routes through relays that can read it. Our differentiators map directly onto this pain.
@@ -96,7 +106,8 @@ secondary buyer; #3 is distribution, not a buyer.
 - **Why now / why this vs alternatives (incl. "do nothing"):**
   - **Why now:** Multi-agent is going from demo to default; the orchestration and interop
     layers are crowded, but the *account-less, broker-blind comms line built for agents*
-    is the gap. Agent identity is a named, current security problem (RSAC 2026).
+    is the gap. Agent identity is a recognized, current security problem (Dossier 01) —
+    we lead on the mechanism we can prove, not on borrowed headlines.
   - **vs do-nothing (roll your own):** identity + E2E crypto + durable channels +
     wake-on-mail out of the box, instead of a file you babysit.
   - **vs a hosted relay / SaaS:** broker relays **ciphertext only**; no vendor holds keys.
@@ -116,9 +127,11 @@ secondary buyer; #3 is distribution, not a buyer.
   mechanic on the page; design and copy must treat it as such.
 - **Why that action:** an install is a real adopter, not a vanity metric, and it puts the
   product in their hands where it sells itself.
-- **Secondary action (only one):** **View the commits** — the role-attributed git log
+- **Secondary action (only one):** **View the commits** — the role-prefixed git log
   proving the site was built over a2adapt. The skeptic's low-commitment path that turns
-  doubt into credibility before they install.
+  doubt into credibility before they install. *(Author re-attribution is being finalized
+  and is Auditor-gated — see §6; the brief doesn't promise byte-clean author stamps until
+  Auditor signs off.)*
 
 ## 5. Message hierarchy (the scroll)
 
@@ -136,8 +149,8 @@ secondary buyer; #3 is distribution, not a buyer.
    invite → encrypted channel → message → wake on reply* — so they see a few MCP calls,
    not a framework to learn. Problem-first / bold-statement storytelling, not a function
    list (Dossier 03).
-4. **Fourth beat — the proof, in full:** the role-attributed git-log timeline as the
-   testimonial wall; the dogfooding anecdote.
+4. **Fourth beat — the proof, in full:** the role-prefixed git-log timeline as the
+   testimonial wall; the dogfooding anecdote. (Author-attribution claims gated by Auditor — §6.)
 - **CTA placement:** primary **Install** in the hero and again in a final contrasting CTA
   block (one line, one button — Dossier 03); secondary **View the commits** beside it in
   the hero and inline at the proof beat.
@@ -147,12 +160,18 @@ secondary buyer; #3 is distribution, not a buyer.
 - **How "built by agents over a2adapt, git-is-the-receipt" becomes buyer credibility (not
   a party trick):** the buyer's deepest infra fear is *"is this real and will it hold up?"*
   Our answer is uniquely strong and **unfakeable**: a full team of autonomous agents
-  coordinated an entire shipped site over this exact channel, every commit role-attributed
-  in public git history. That's not a testimonial — it's an auditable load test. **The
+  coordinated an entire shipped site over this exact channel, the work role-prefixed
+  through public git history. That's not a testimonial — it's an auditable load test. **The
   medium is the proof:** the thing being sold is the thing that built the page selling it.
   No protocol vendor's landing page can say this (Dossier 02) — it's also the moat.
+- **Attribution status (honesty — Researcher Dossier 02 audit):** commit **subjects** are
+  role-prefixed end-to-end today (`Coordinator:`/`Researcher:`/…); commit **authors** are
+  not yet fully re-attributed (a worktree-config artifact, being corrected during
+  integration). **The brief therefore claims only what is true now — role-prefixed history
+  — and does not promise byte-clean author stamps until the Auditor's Phase-3 gate signs
+  it off.** Copy/design must phrase the proof beat to that standard.
 - **What proof artifacts the page shows and what each proves:**
-  - **Role-attributed git-log timeline** = our **testimonial wall** (we have no logos/stars
+  - **Role-prefixed git-log timeline** = our **testimonial wall** (we have no logos/stars
     yet; this is honest social proof, Dossier 03). Proves *real multi-party coordination
     happened* — not one author in hats. (The "View the commits" destination.)
   - **The redacted agent-to-agent transcript** (hero) → coordination over the channel is
@@ -162,8 +181,8 @@ secondary buyer; #3 is distribution, not a buyer.
     enough that **building it required using it.** Honesty about friction *builds* trust
     with this audience (Dossier 01).
   - **Evidence:** Dossiers 02, 03 (proof-by-doing as the strongest converting pattern;
-    git-history-as-testimonial). Auditor confirms the history is clean + role-attributed
-    end-to-end before ship (Phase 3 gate).
+    git-history-as-testimonial). Auditor confirms the history is clean + author-attributed
+    end-to-end before ship (Phase 3 gate) — until then the page claims role-prefixed only.
 
 ## 7. Objection handling
 
@@ -205,10 +224,12 @@ secondary buyer; #3 is distribution, not a buyer.
   - Not explaining cryptographic internals — altitude over depth on the landing.
   - Not over-building: no comparison tables / pricing / blog wall (early-product trap,
     Dossier 03); stop at an FAQ if needed.
+  - Not leaning on borrowed market numbers for credibility — published claims rest on
+    a2adapt's own verifiable mechanics + the real git proof (Critic-A binding condition).
 
 ---
 
 ### Approvals (required before Phase 2)
-- [x] Sales sign-off — v2 reflects Researcher dossiers 01–04 and resolves the A2A naming hazard per Coordinator's directive.
+- [x] Sales sign-off — v3 reflects Researcher dossiers 01–04, resolves the A2A naming hazard per Coordinator's directive, and applies Critic-A's binding evidence-discipline condition (market stats context-only; proof claims limited to role-prefixed history until Auditor signs off author attribution).
 - [ ] Critic-A `APPROVE`
 - [ ] Critic-B `APPROVE`
