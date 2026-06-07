@@ -218,8 +218,8 @@ export default function Landing() {
   return (
     <div className="landing">
       <Hero />
-      <InstallBlock />
       <Differentiators />
+      <InstallBlock />
       <HowItWorks />
       <Proof />
       <Closing />
