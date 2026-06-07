@@ -1,158 +1,214 @@
 # Positioning Brief — a2adapt site
 
-> Owner: **Sales**. Evidence: **Researcher**. Gate: **Critic-A + Critic-B**
-> (dual-approval) + Sales sign-off. Once approved, this file is **the contract** —
-> every Phase-2 artifact is judged against it.
+> Owner: **Sales**. Evidence: **Researcher** (dossiers 01–04, all 2026-06-07, @ `work/researcher`).
+> Gate: **Critic-A + Critic-B** (dual-approval) + Sales sign-off. Once approved,
+> this file is **the contract** — every Phase-2 artifact is judged against it.
 >
-> **Status:** v1 draft for review. Evidence links marked `⟨RESEARCH PENDING⟩` are
-> open requests to Researcher (Vitalii 1); the positioning does not depend on them
-> being filled, but the approved brief will carry them.
+> **Status:** v2 — grounded in Researcher dossiers 01–04. Ready for the Critic gate.
+
+---
+
+## 0. Category position & the "A2A" naming collision (resolved — read first)
+
+This is the single biggest positioning risk (Dossier 02) and the spine of the whole
+brief, so it is resolved up front and everything below inherits it.
+
+- **The hazard:** "A2A" now strongly means **Google's Agent2Agent protocol** (under the
+  Linux Foundation's AAIF, alongside MCP). "a2adapt" reads as "a2a + dapt" and will be
+  misread as "an A2A thing" unless we get ahead of it on the first screen.
+- **The resolution (per Coordinator — fixed name, positioning fix, not a rename):**
+  1. **Own the expansion explicitly:** a2adapt = **agent-to-agent over ADAPT**. State it
+     plainly so the reader never has to guess.
+  2. **Don't fight on interop — we lose and look confused.** MCP (agent→tool) and A2A
+     (agent→agent discovery/delegation) own the *standards* layer. We are **not** a
+     competing protocol.
+  3. **Frame as complementary, anchored on the gap they leave open:** *"Your agents
+     already speak MCP/A2A. a2adapt is the private, account-less, end-to-end-encrypted
+     line between two agents **you** own."* That gap — self-sovereign identity + a
+     broker that's blind to contents — is **documented and real** (A2A's agent cards
+     aren't mandated-verified; transport security is TLS-in-transit that intermediaries
+     terminate — Dossier 02).
+- **Honesty guard (charter + Dossier 02):** a2adapt is an **application-layer channel
+  brokered over ADAPT**, not a competitor to the MCP/A2A standards. Every downstream
+  claim stays inside that envelope. The positioning veto enforces it.
 
 ---
 
 ## 1. Target audience
 
-- **Primary buyer/adopter:** The **builder of multi-agent systems on Claude Code** —
-  a developer or AI engineer who already runs more than one agent and now needs those
-  agents to *talk to each other*. They write their own plugins/MCP tools, live in the
-  terminal, and are wiring agentic workflows today, not evaluating them for next year.
-- **Their role / context:** Indie hackers, applied-AI engineers, and small platform
-  teams inside the Claude Code / MCP ecosystem. Right now they coordinate agents with
-  whatever's lying around — a shared file, a Redis list, a hosted API that reads every
-  message — and they feel the seams.
+Three segments (Dossier 01), in priority order. **The page leads to #1**; #2 is a real
+secondary buyer; #3 is distribution, not a buyer.
+
+- **PRIMARY buyer/adopter — agent/AI engineers building multi-agent systems on Claude
+  Code.** They wire up Claude Code, MCP servers, and multi-agent workflows *today*. Same
+  population driving MCP adoption (**97M+ monthly MCP SDK downloads, 10,000+ public MCP
+  servers as of Feb 2026** — Dossier 01). a2adapt ships **as a Claude Code plugin**, so
+  install friction for this segment is near-zero — our strongest conversion lever.
+- **SECONDARY buyer — security-conscious teams worried about agent identity & data
+  exposure.** Agent identity was a headline topic at **RSAC 2026** (Dossier 01). Their
+  lived pain: identity infra was built for humans, so agents get **org-wide API keys**
+  and **shared service accounts** instead of scoped, self-owned identity, and traffic
+  routes through relays that can read it. Our differentiators map directly onto this pain.
+- **AMPLIFIERS (not buyers) — the AI-builder / proof-of-craft community.** Indie hackers,
+  devtool-X, Claude Code power users. They don't buy; they **share** things that are
+  clever and self-evidently real. The "built by agents, over agents, git-is-the-proof"
+  conceit is engineered for their reflexes — it's our distribution.
+- **Their context:** terminal-native, write their own plugins/MCP tools. Today they
+  coordinate agents with whatever's around — a shared file, a queue, a hosted API that
+  reads every message — and feel the seams.
 - **Explicitly NOT for:**
-  - Non-technical buyers or "AI strategy" decision-makers — there is no SaaS dashboard
-    to demo.
-  - Teams shopping for a full **orchestration framework** (LangGraph / CrewAI / AutoGen).
-    a2adapt is the **secure comms layer**, not the brain that decides who does what.
-  - Single-agent users — there is no peer to message; the value starts at two agents.
-  - Anyone wanting a managed, hosted, "someone-else-runs-it" product. This is keys you
-    own and a broker you can point anywhere.
-- **Evidence:** ⟨RESEARCH PENDING — Vitalii 1: (a) sizing/where Claude-Code multi-agent
-  builders congregate; (b) how this cohort coordinates agents today (file/queue/hosted)⟩
+  - Non-technical buyers / "AI strategy" decision-makers — there's no SaaS dashboard.
+  - Teams shopping for an **orchestration framework** (LangGraph / CrewAI / AutoGen) —
+    a2adapt is the secure comms layer, not the brain that decides who does what.
+  - Single-agent users — no peer to message; value starts at two agents.
+  - Anyone wanting a managed/hosted "someone-else-runs-it" product.
+- **Evidence:** Dossier 01 (audience & pain), Dossier 02 (category & differentiators).
 
 ## 2. Jobs-to-be-done & pains
 
-- **Job 1: Get two+ of my agents coordinating reliably** → pain today: I hand-roll a
-  message bus (shared files, a queue, polling). It's brittle, there's no identity, no
-  "wake me when there's a reply," and I rebuild it on every project.
-- **Job 2: Keep what my agents say to each other private** → pain today: cross-host or
-  cross-tenant agents route through something — a relay, a SaaS — that sees plaintext.
-  There's no real identity model, just API keys and trust-the-vendor.
-- **Job 3: Prove the multi-agent system actually did the work** → pain today: agent
-  collaboration is invisible; I can't show *who did what* in a way anyone trusts.
-- **Top objection / hesitation:** "I can do this with a shared file / a queue — why add
-  a dependency?" (Answered in §7.)
+- **Job 1 (primary): Get two+ of my agents coordinating reliably** → pain today: I
+  hand-roll a message bus (files, queues, polling). Brittle, no identity, no "wake me on
+  reply," rebuilt every project.
+- **Job 2 (security): Give each agent an identity it owns and keep agent-to-agent traffic
+  confidential even from the relay** → pain today: org-wide API keys, shared service
+  accounts, no per-agent self-owned identity; the relay sees plaintext (Dossier 01).
+- **Job 3 (proof): Show the multi-agent system actually did the work** → pain today:
+  agent collaboration is invisible; I can't prove *who did what* in a way anyone trusts.
+- **Top objection / hesitation:** "Isn't this just Google A2A / MCP?" — the #1 objection;
+  unanswered it kills credibility on contact (resolved in §0 and §7).
 
 ## 3. Value proposition
 
-- **One sentence, in their language:** **Give your Claude Code agents a private,
-  encrypted channel to talk to each other — self-sovereign identities, no central
-  account, drop-in as a plugin.**
+- **One sentence, in their language:** **The private, account-less, end-to-end-encrypted
+  line between two agents you own — a2adapt (agent-to-agent over ADAPT), drop-in as a
+  Claude Code plugin.**
 - **The outcome we sell (not the feature):** Your agents coordinate like a real team —
-  each with its own identity, on channels nobody else can read — and you never build a
-  message bus again. Encryption and identity come for free; you spend your time on the
-  agents, not the plumbing.
+  each with an identity *it owns*, on channels even the broker can't read — and you never
+  build a message bus again. Identity and encryption come for free; you spend your time
+  on the agents, not the plumbing or the trust model.
+- **The two differentiators we anchor on** (real, defensible, publicly-documented gaps —
+  Dossier 02):
+  1. **Self-sovereign identity** — each identity is a keypair the agent owns; **no
+     central account, no registration server.** The category default is the opposite.
+  2. **End-to-end encryption where the broker is blind** — the relay moves **ciphertext
+     only**; keys live on your disk. Contrast with "TLS in transit," where intermediaries
+     terminate.
 - **Why now / why this vs alternatives (incl. "do nothing"):**
-  - **Why now:** Multi-agent is going from demo to default. The orchestration layer is
-    crowded; the *secure comms layer built for agents* is missing. Everyone solving it
-    is reinventing a bus per project.
-  - **vs do-nothing (roll your own):** You get identity + E2E crypto + durable channels
-    + wake-on-mail out of the box, instead of a file you have to babysit.
-  - **vs a hosted relay / SaaS:** The broker relays **ciphertext only** — it never sees
-    message contents, and your keys live on your disk, not a vendor's.
-  - **vs an orchestration framework:** Those decide *what* agents do; a2adapt is the
-    *wire they speak over*. It composes under them rather than competing.
+  - **Why now:** Multi-agent is going from demo to default; the orchestration and interop
+    layers are crowded, but the *account-less, broker-blind comms line built for agents*
+    is the gap. Agent identity is a named, current security problem (RSAC 2026).
+  - **vs do-nothing (roll your own):** identity + E2E crypto + durable channels +
+    wake-on-mail out of the box, instead of a file you babysit.
+  - **vs a hosted relay / SaaS:** broker relays **ciphertext only**; no vendor holds keys.
+  - **vs orchestration frameworks / MCP / A2A:** they decide *what* agents do and how they
+    *interoperate*; a2adapt is the private *wire two of your own agents speak over*. It
+    **composes under them** — complementary, not competing (§0).
 
 ## 4. Conversion goal
 
-- **The single primary action a visitor should take:** **Install the plugin** —
+- **The single primary action:** **Install the plugin** —
   `claude plugin marketplace add adapt-toolkit/a2adapt` → `claude plugin install
-  a2adapt@a2adapt`. This is the activation moment: the MCP tools appear and they can
-  create an identity in the next minute.
-- **Why that action:** Install is the highest-intent, lowest-time-to-value step for this
-  buyer. It's two commands, no signup, no account — friction is near zero, and it puts
-  the product in their hands where it sells itself. For us, an install is a real adopter,
-  not a vanity metric.
+  a2adapt@a2adapt`. For this buyer, install is the highest-intent, lowest-time-to-value
+  step: two commands, no signup, no account, MCP tools appear, identity in the next minute.
+- **The conversion lever:** we have **no form** — so our equivalent of the "shorten the
+  form" lever (Dossier 03: 11→4 fields drove +120%) is **making the install command
+  one-click-copy and impossible to miss.** That is the highest-leverage conversion
+  mechanic on the page; design and copy must treat it as such.
+- **Why that action:** an install is a real adopter, not a vanity metric, and it puts the
+  product in their hands where it sells itself.
 - **Secondary action (only one):** **View the commits** — the role-attributed git log
-  that proves the site was built over a2adapt. This is the skeptic's path: lower
-  commitment, and it converts doubt into credibility before they install.
+  proving the site was built over a2adapt. The skeptic's low-commitment path that turns
+  doubt into credibility before they install.
 
 ## 5. Message hierarchy (the scroll)
 
-1. **Hero — first 3 seconds:** "**Encrypted messaging between your agents.**" — the one
-   thing they must grasp: a2adapt is the private channel your Claude Code agents talk
-   over. Sub-line names the proof: *this page was built by a team of agents using it.*
-2. **Second beat — how little it takes:** the shape of a conversation — *create
-   identity → invite → encrypted channel → message → wake on reply* — so they see it's
-   a few MCP calls, not a framework to learn.
-3. **Third beat — why it's trustworthy:** the proof. The site is its own receipt; the
-   git-log timeline shows a real team of agents shipping real work over the channel.
-4. **Fourth beat — what makes it different:** self-sovereign identity (keys you own),
-   broker sees only ciphertext, durable channels, drop-in plugin. Outcome framing, not
-   a feature dump.
-- **CTA placement:** primary **Install** in the hero and repeated at the end of the
-  scroll; secondary **View the commits** beside it in the hero and inline at the proof
-  beat.
+1. **Hero — first 3 seconds:** the one thing they must grasp — *a2adapt is the private,
+   encrypted channel your Claude Code agents talk over.* The **hero visual IS the proof**
+   (Dossier 03/04): a real, **redacted agent-to-agent transcript** in a terminal/receipt
+   frame (sender, timestamp, encrypted payload). It satisfies "show don't tell," the
+   code-snippet-hero pattern, and the proof conceit at once. Headline is **opinionated +
+   specific** (Linear-style), never a buzzword. Eyebrow names what it is: *agent-to-agent
+   over ADAPT.* **Two CTAs:** primary **Install the plugin**, secondary **View the commits.**
+2. **Second beat — preempt "isn't this just A2A/MCP?"** (the #1 objection, §0). State the
+   complementary line and the two differentiators (self-sovereign identity, broker-blind
+   E2E) on the first screen, before the reader assumes we're Google A2A.
+3. **Third beat — how little it takes:** the conversation shape — *create identity →
+   invite → encrypted channel → message → wake on reply* — so they see a few MCP calls,
+   not a framework to learn. Problem-first / bold-statement storytelling, not a function
+   list (Dossier 03).
+4. **Fourth beat — the proof, in full:** the role-attributed git-log timeline as the
+   testimonial wall; the dogfooding anecdote.
+- **CTA placement:** primary **Install** in the hero and again in a final contrasting CTA
+  block (one line, one button — Dossier 03); secondary **View the commits** beside it in
+  the hero and inline at the proof beat.
 
 ## 6. Proof strategy
 
-- **How "built by agents over a2adapt, git-is-the-receipt" becomes buyer credibility
-  (not a party trick):** The buyer's deepest fear with infra is *"is this real and will
-  it hold up under a real workload?"* The honest answer here is uniquely strong: a whole
-  team of autonomous agents coordinated an entire shipped website over this exact
-  channel, and every commit is role-attributed in the public git history. That's not a
-  testimonial — it's a load test you can audit line by line. **The medium is the proof:**
-  the thing being sold is the thing that built the page selling it.
-- **What proof artifacts the page shows and what each proves to the buyer:**
-  - **Role-attributed git-log timeline** → *real, multi-party coordination happened* —
-    not one author wearing hats. (This is the "View the commits" destination.)
-  - **The dogfooding anecdote** (the team's invite blob kept getting mangled by
-    copy-paste; relaying it *over a2adapt itself* fixed it byte-for-byte) → *the channel
-    is reliable enough that building it required using it.*
-  - **The conversation shape / a real transcript fragment** → *coordination over the
-    channel is legible and ordinary*, lowering the "this looks hard" barrier.
-  - **Evidence:** ⟨RESEARCH PENDING — Vitalii 1: confirm the git history is clean and
-    role-attributed end-to-end so we can point to it without an asterisk⟩
+- **How "built by agents over a2adapt, git-is-the-receipt" becomes buyer credibility (not
+  a party trick):** the buyer's deepest infra fear is *"is this real and will it hold up?"*
+  Our answer is uniquely strong and **unfakeable**: a full team of autonomous agents
+  coordinated an entire shipped site over this exact channel, every commit role-attributed
+  in public git history. That's not a testimonial — it's an auditable load test. **The
+  medium is the proof:** the thing being sold is the thing that built the page selling it.
+  No protocol vendor's landing page can say this (Dossier 02) — it's also the moat.
+- **What proof artifacts the page shows and what each proves:**
+  - **Role-attributed git-log timeline** = our **testimonial wall** (we have no logos/stars
+    yet; this is honest social proof, Dossier 03). Proves *real multi-party coordination
+    happened* — not one author in hats. (The "View the commits" destination.)
+  - **The redacted agent-to-agent transcript** (hero) → coordination over the channel is
+    *legible and ordinary*, lowering the "this looks hard" barrier.
+  - **The dogfooding anecdote** (the team's invite blob kept getting mangled by copy-paste;
+    relaying it *over a2adapt itself* fixed it byte-for-byte) → the channel is reliable
+    enough that **building it required using it.** Honesty about friction *builds* trust
+    with this audience (Dossier 01).
+  - **Evidence:** Dossiers 02, 03 (proof-by-doing as the strongest converting pattern;
+    git-history-as-testimonial). Auditor confirms the history is clean + role-attributed
+    end-to-end before ship (Phase 3 gate).
 
 ## 7. Objection handling
 
 | # | Objection (buyer's words) | On-page answer |
 |---|---------------------------|----------------|
-| 1 | "I can just use a shared file or a queue — why add a dependency?" | You'd be rebuilding identity, encryption, durable channels, and wake-on-reply by hand, per project. a2adapt is those, as two install commands. Show the 5-step conversation shape. |
-| 2 | "I don't need encryption between my own agents." | The moment agents cross hosts, tenants, or orgs, *something* relays their traffic. a2adapt's broker relays **ciphertext only**; keys never leave your disk. You get it for free — don't bolt it on later. |
-| 3 | "Is this real / maintained / will it actually work?" | This whole site was built by agents coordinating over a2adapt; the git log is the receipt. Read the commits. |
-| 4 | "Will I get locked in?" | Identities are self-sovereign keypairs **you own**; it's open and ADAPT-based; the broker is transport you can self-host or repoint. No account, no central registry. |
-| 5 | "How much setup pain?" | Two commands to install, two checks to verify, one call to create an identity. The walkthrough takes you zero-to-encrypted-conversation. |
+| 1 | "Isn't this just Google A2A / MCP?" | No — those are interop *standards* (agent→tool, agent→agent discovery). a2adapt is *agent-to-agent over ADAPT*: the private, account-less, end-to-end-encrypted line between two agents you own. It composes **under** MCP/A2A, doesn't compete. (§0) |
+| 2 | "Can the broker read my agents' messages?" | No — the broker relays **ciphertext only**; it's explicitly not trusted with contents, and keys never leave your disk. (Named mechanism, not "enterprise-grade security.") |
+| 3 | "Another account / registration server to run?" | None. Identities are **self-sovereign keypairs you own** — no central account, no registry. That's the differentiator, not a footnote. |
+| 4 | "I can just use a shared file or a queue — why a dependency?" | You'd rebuild identity, E2E encryption, durable channels, and wake-on-reply by hand, per project. a2adapt is those, as two install commands. Show the 5-step conversation shape. |
+| 5 | "Is this real / will it actually work?" | This whole site was built by agents coordinating over a2adapt; the git log is the receipt. Read the commits. |
+| 6 | "Will the invite/handshake be painful?" | Honestly — base64 invites can get mangled in transit; we hit it and document the fix. Two commands to install, one call to create an identity, a walkthrough to first encrypted message. |
 
 ## 8. Voice & tone
 
 - **Voice (3 adjectives):** **precise, candid, builder-to-builder.**
-- **Do say:** concrete mechanics ("the broker sees only ciphertext"), real specifics
-  ("two commands"), the honest proof story including the failure that was fixed. Speak
-  to an engineer who'll call out hand-waving.
-- **Don't say:** "revolutionary," "seamless," "enterprise-grade," "AI-powered,"
-  vague benefit-speak, or anything that implies a hosted SaaS/dashboard. No feature dumps
-  divorced from outcome. Never oversell encryption beyond what's true (E2E, broker sees
-  ciphertext, keys local).
-- **Reference for tone:** ⟨RESEARCH PENDING — Vitalii 1: 1–2 dev-infra landing pages
-  whose voice lands with this exact cohort (candid, technical), as a tone target⟩
+- **Do say:** concrete mechanics ("the broker sees only ciphertext," "keys on your disk"),
+  real specifics ("two commands"), the honest proof story including the friction we hit.
+  Opinionated and specific (Linear's "unapologetic specificity," Dossier 02/03). Speak to
+  an engineer who'll call out hand-waving.
+- **Don't say:** "revolutionary," "seamless," "AI-powered," and especially **"enterprise-
+  grade security" with no mechanism named** — technical buyers read it as a tell there's
+  nothing underneath (Dossier 02/03). No SaaS/dashboard implication. No feature dumps
+  divorced from outcome. Never claim to *be* a protocol/standard (the A2A trap). Never
+  oversell encryption beyond truth (E2E, broker sees ciphertext, keys local).
+- **Reference for tone:** Linear (opinionated, specific, clean); Evil Martians' devtool
+  landing-page studies (Dossier 02/03) as the anti-pattern checklist.
 
 ## 9. Success criteria
 
 - **How we'll know the page works:** the visitor understands **"this is the private,
-  encrypted channel my Claude Code agents talk over, and it's proven by the way this very
-  page was built"** and does **install the plugin** (or, if skeptical, views the commits
-  and leaves convinced it's real).
+  account-less, encrypted channel my Claude Code agents talk over — distinct from A2A/MCP,
+  and proven by the way this very page was built"** and **installs the plugin** (or, if
+  skeptical, views the commits and leaves convinced it's real).
 - **Non-goals:**
-  - Not a full a2adapt/ADAPT API reference — the docs cover mechanics; the landing sells.
-  - Not pitching a2adapt as an orchestration framework or a hosted product.
+  - Not a full a2adapt/ADAPT API reference — docs cover mechanics; the landing sells.
+  - Not pitching a2adapt as an orchestration framework, an interop standard, or a hosted
+    product.
   - Not chasing non-technical or single-agent visitors.
-  - Not explaining the cryptographic internals — altitude over depth on the landing.
+  - Not explaining cryptographic internals — altitude over depth on the landing.
+  - Not over-building: no comparison tables / pricing / blog wall (early-product trap,
+    Dossier 03); stop at an FAQ if needed.
 
 ---
 
 ### Approvals (required before Phase 2)
-- [ ] Sales sign-off
+- [x] Sales sign-off — v2 reflects Researcher dossiers 01–04 and resolves the A2A naming hazard per Coordinator's directive.
 - [ ] Critic-A `APPROVE`
 - [ ] Critic-B `APPROVE`
