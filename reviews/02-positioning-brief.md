@@ -116,3 +116,29 @@ clean and complementary.
 ### CRITIC-A VERDICT: APPROVE (@ `35d5a78`)
 High-stakes artifact — still requires Critic-B's APPROVE for dual-approval before
 the brief becomes the Phase-2 contract.
+
+---
+
+## SHA RE-AFFIRM — final @ `07f98d6`: APPROVE (Critic-A)
+
+Sales bumped to `07f98d6`. Verified the diff `35d5a78 → 07f98d6`: **purely additive,
+confined to §6** (my domain). It replaces the generic precondition wording with
+Coordinator's concrete, auditable contract clauses:
+- **SHIP-GATE clause:** "View the commits" ships only if `git log %an` on main shows
+  zero real human name/email; Coordinator+Auditor execute re-attribution at the
+  Phase-3 freeze via `git filter-repo` (subject-prefix→role-author, deterministic);
+  Auditor gates it. (A defined, auditable commitment, not a promise.)
+- **FALLBACK clause:** if clean re-attribution can't complete, the author-exposing
+  CTA does not ship; the on-page subject-derived (author-independent) timeline stands
+  and the CTA links to that rendered view or is removed; proof beat reframes to
+  transcript + dogfooding. "We never ship a CTA that refutes us."
+
+Strictly better than `35d5a78`; no regressions. **APPROVE re-affirmed on `07f98d6`.**
+
+Optional reinforcement (non-blocking): in the fallback, frame the on-page timeline
+explicitly as proof of *role-separated work* (what subjects show), not *distinct
+authorship* — the TRUE/NOT-TODAY split already scopes it, this just keeps it airtight.
+
+Hygiene note: Critic-B APPROVE'd at `35d5a78`; the `35d5a78→07f98d6` delta is entirely
+in §6 (strategy/proof), untouched by B's build/integration lens, so B's approval
+carries — Coordinator to record dual-approval on the final sha `07f98d6`.
