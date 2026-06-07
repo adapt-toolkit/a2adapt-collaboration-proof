@@ -212,6 +212,16 @@ h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; }
 .tl-hash { font-family: var(--mono); font-size: 0.74rem; color: var(--faint); }
 .tl-summary { margin: 0; font-size: 0.96rem; color: var(--fg); }
 
+/* proof-artifact cards (§4.7) — Engineer's JSX contract; brief §6 transcript/relay callbacks */
+.proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.3rem; }
+.proof { background: var(--panel); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 1.4rem; display: flex; flex-direction: column; gap: 0.7rem; }
+.proof-tag { align-self: flex-start; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent-line); padding: 0.18em 0.6em; border-radius: var(--r-pill); }
+.proof h3 { margin: 0.2rem 0 0; font-size: 1.18rem; }
+.proof-body { margin: 0; color: var(--muted); font-size: 0.96rem; }
+.proof-code { margin: 0.3rem 0 0; background: var(--panel-2); border: 1px solid var(--border); border-radius: var(--r-md); padding: 0.9rem 1rem; overflow-x: auto; }
+.proof-code code { font-family: var(--mono); font-size: 0.82rem; color: var(--accent); white-space: pre; line-height: 1.6; }
+.proof-caption { margin: 0; font-size: 0.82rem; color: var(--faint); font-style: italic; }
+
 /* dogfood anecdote card (§4.7) */
 .dogfood { background: var(--panel); border: 1px solid var(--border); border-radius: var(--r-lg); border-left: 3px solid var(--accent-line); padding: 1.4rem; }
 .dogfood p { margin: 0; color: var(--muted); }

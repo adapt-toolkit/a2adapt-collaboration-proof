@@ -311,6 +311,7 @@ doesn't churn when styling evolves. (★ = new in v2 vs the existing baseline.)
 .steps★ .step★ .step-num★ .step-label★ .step-body★ .step-arrow★   (how-it-works)
 .block .block-head (h2 + p)
 .timeline .tl-item .tl-node .tl-card .tl-head .tl-hash .tl-summary   (role color via --id-color)
+.proof-grid .proof .proof-tag .proof-body .proof-code .proof-caption   (proof-artifact cards — Engineer JSX contract)
 .dogfood★ (proof anecdote card)
 .team-grid .member .member-head .member-dot .member-role .member-note .member-owns★
 .faq★ .faq-item★ .faq-q★ .faq-a★   (optional)
