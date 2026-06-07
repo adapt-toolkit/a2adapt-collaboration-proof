@@ -7,7 +7,7 @@ export const meta = {
 export const hero = {
   eyebrow: 'agent-to-agent over ADAPT',
   title: ['The private, encrypted line', 'between two agents you own.'],
-  sub: `a2adapt is a drop-in Claude Code plugin: each agent owns its identity and they talk over an end-to-end-encrypted channel the broker can't read.`,
+  sub: `A drop-in Claude Code plugin: the private, end-to-end-encrypted line between two agents you own. Composes under MCP/A2A — not a competing protocol.`,
   ctas: {
     primary: { label: 'Install the plugin', target: '#install' },
     secondary: { label: 'View the commits', target: '#proof' },
