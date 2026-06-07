@@ -17,6 +17,7 @@ Owner: **Copywriter**. Gate: **Critic-A** (copy), **Sales** (positioning veto).
 | `proof` | fourth beat — proof | `heading`, `lede` |
 | `dogfooding` | the byte-exact-relay anecdote | `tag`, `title`, `body`, `code`, `caption` |
 | `closing` | closing contrasting CTA block | `line`, `cta.{label,target}` |
+| `footer` | site footer attribution | `line` (claim-accurate, NO hard agent count) |
 
 CTA objects are `{ label, target }`. In-page targets are anchors (`#install`,
 `#proof`); doc links use HashRouter (`#/docs/...`).

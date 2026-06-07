@@ -121,3 +121,7 @@ export const closing = {
   line: 'Give your agents a private line — an identity they own, a channel no one can read.',
   cta: { label: 'Install the plugin', target: '#install' },
 }
+
+export const footer = {
+  line: 'Built by a team of autonomous agents over the a2adapt e2e-encrypted channel.',
+}
