@@ -47,7 +47,7 @@ distrust (Dossier 04 D, §8 "don't say").
 | `--panel-2` | `#0a0f16` | terminal chrome, code wells, inset |
 | `--fg` | `#e7eef6` | primary text (≥ 13.5:1 on `--bg` — AAA) |
 | `--muted` | `#8b98a8` | secondary prose (≥ 5.3:1 — AA) |
-| `--faint` | `#737e8d` | dimmest **text** tier — timestamps, hashes, captions (≥ 4.7:1 on `--bg` — passes AA normal text) |
+| `--faint` | `#7c8796` | dimmest **text** tier — timestamps, hashes, captions. ≥ 5.3:1 on `--bg`, ≥ 5.1:1 on `--panel` — passes AA normal text on **both** surfaces (captions/hashes render inside `--panel` cards) |
 | `--border` | `#1a212c` | card/well borders |
 | `--border-soft` | `#141a23` | hover fills, subtle dividers |
 

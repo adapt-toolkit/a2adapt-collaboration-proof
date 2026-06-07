@@ -10,7 +10,7 @@
   --panel-2: #0a0f16;
   --fg: #e7eef6;
   --muted: #8b98a8;
-  --faint: #737e8d; /* dimmest TEXT tier — ~4.7:1 on --bg, passes WCAG AA normal text */
+  --faint: #7c8796; /* dimmest TEXT tier — ~5.3:1 on --bg, ~5.1:1 on --panel: passes WCAG AA normal text on BOTH surfaces (captions/hashes render inside panel cards) */
   --border: #1a212c;
   --border-soft: #141a23;
 
