@@ -157,9 +157,7 @@ function HowItWorks() {
         ))}
       </ol>
       {howItWorks.cta && (
-        <div className="cta-row">
-          <CtaLink cta={howItWorks.cta} variant="btn-ghost" />
-        </div>
+        <a className="text-link" href={howItWorks.cta.target}>{howItWorks.cta.label}</a>
       )}
     </section>
   )
@@ -167,7 +165,7 @@ function HowItWorks() {
 
 function Timeline() {
   return (
-    <ol className="timeline" id="timeline">
+    <ol className="timeline">
       {buildOrder.map((c) => (
         <li className="tl-item" key={c.hash} style={idStyle(c.identity)}>
           <span className="tl-node" />
