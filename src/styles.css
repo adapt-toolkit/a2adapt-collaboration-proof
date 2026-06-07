@@ -1,0 +1,74 @@
+/* Minimal base styles — Alice owns the real visual design.
+   Kept deliberately plain so it's obvious what's scaffold vs. craft. */
+
+:root {
+  --bg: #0e1116;
+  --fg: #e6edf3;
+  --muted: #9aa7b4;
+  --accent: #5eead4;
+  --border: #232a33;
+  --max: 960px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  line-height: 1.6;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.app { min-height: 100vh; display: flex; flex-direction: column; }
+
+.nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);
+}
+.nav-brand { font-weight: 700; font-size: 1.15rem; color: var(--fg); }
+.nav-links { display: flex; gap: 1.25rem; }
+
+.app-main { flex: 1; width: 100%; max-width: var(--max); margin: 0 auto; padding: 2rem 1.5rem; }
+
+.landing { text-align: center; padding: 3rem 0; }
+.landing h1 { font-size: 3rem; margin: 0 0 1rem; }
+.landing-tagline { max-width: 620px; margin: 0 auto 2rem; color: var(--muted); font-size: 1.15rem; }
+.landing-cta { display: flex; gap: 1rem; justify-content: center; }
+
+.btn {
+  display: inline-block; padding: 0.6rem 1.2rem; border-radius: 8px;
+  background: var(--accent); color: #08120f; font-weight: 600;
+}
+.btn:hover { text-decoration: none; opacity: 0.9; }
+.btn-ghost { background: transparent; color: var(--fg); border: 1px solid var(--border); }
+
+.docs { display: grid; grid-template-columns: 220px 1fr; gap: 2rem; }
+.docs-sidebar ul { list-style: none; margin: 0; padding: 0; position: sticky; top: 1rem; }
+.docs-sidebar li { margin: 0.25rem 0; }
+.docs-sidebar a { color: var(--muted); display: block; padding: 0.3rem 0.5rem; border-radius: 6px; }
+.docs-sidebar a.active { color: var(--fg); background: var(--border); }
+.docs-empty { color: var(--muted); }
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3 { line-height: 1.25; }
+.markdown-body pre {
+  background: #0a0d12; border: 1px solid var(--border); border-radius: 8px;
+  padding: 1rem; overflow-x: auto;
+}
+.markdown-body code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em; }
+.markdown-body :not(pre) > code { background: var(--border); padding: 0.1em 0.35em; border-radius: 4px; }
+.markdown-body table { border-collapse: collapse; }
+.markdown-body th, .markdown-body td { border: 1px solid var(--border); padding: 0.4rem 0.7rem; }
+
+.app-footer {
+  border-top: 1px solid var(--border); padding: 1.5rem; text-align: center;
+  color: var(--muted); font-size: 0.9rem;
+}
+
+@media (max-width: 700px) {
+  .docs { grid-template-columns: 1fr; }
+  .landing h1 { font-size: 2.2rem; }
+}
