@@ -197,14 +197,19 @@ secondary buyer; #3 is distribution, not a buyer.
   self-refute (per Critic-A):** A skeptic on the "View the commits" path inspects
   **authors** (`%an`), not subjects. Presenting a one-human-author history as "built by a
   team" turns our strongest proof into our most visible refutation. Therefore:
-  1. **Clean end-to-end author re-attribution is a hard precondition** for BOTH the
-     git-log proof beat **and** the "View the commits" CTA. Neither ships against
-     one-human-author history under any branch. (Re-attribution mechanism = Coordinator /
-     Auditor; this contract only pins the dependency.)
-  2. **Defined fallback if clean author attribution can't be achieved before ship:** the
-     proof beat **reframes to transcript + dogfooding only** (which are true regardless of
-     authorship), and the secondary CTA **changes to a path that does not invite authorship
-     inspection** (e.g. "Read the walkthrough" / the on-page transcript) — never a git log.
+  1. **SHIP-GATE (contract clause, mechanism supplied by Coordinator):** *"The 'View the
+     commits' proof ships only if main's commit AUTHORS are role-attributed end-to-end
+     (`git log %an` shows zero real human name/email). Coordinator+Auditor execute this
+     re-attribution at the Phase-3 integration freeze via `git filter-repo`
+     (subject-prefix → role-author, deterministic). Auditor gates it."* This makes the
+     precondition a defined, auditable commitment — not a promise — for BOTH the git-log
+     proof beat and the "View the commits" CTA.
+  2. **FALLBACK (contract clause):** *"If clean re-attribution cannot complete, the
+     author-exposing 'View the commits' CTA does not ship; the on-page timeline —
+     role-attributed from commit subjects, author-independent — stands as the proof and the
+     CTA links to that rendered view or is removed. We never ship a CTA that refutes us."*
+     The proof beat correspondingly reframes to **transcript + dogfooding** (true regardless
+     of authorship) if the author-level claim can't be made good.
 - **What proof artifacts the page shows and what each proves:**
   - **Role-prefixed git-log timeline** = our intended **testimonial wall** (we have no
     logos/stars yet; honest social proof, Dossier 03). It is the **"View the commits"
