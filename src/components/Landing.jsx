@@ -156,6 +156,11 @@ function HowItWorks() {
           </li>
         ))}
       </ol>
+      {howItWorks.cta && (
+        <div className="cta-row">
+          <CtaLink cta={howItWorks.cta} variant="btn-ghost" />
+        </div>
+      )}
     </section>
   )
 }
