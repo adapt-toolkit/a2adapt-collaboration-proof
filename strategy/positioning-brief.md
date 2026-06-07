@@ -209,7 +209,10 @@ secondary buyer; #3 is distribution, not a buyer.
      role-attributed from commit subjects, author-independent — stands as the proof and the
      CTA links to that rendered view or is removed. We never ship a CTA that refutes us."*
      The proof beat correspondingly reframes to **transcript + dogfooding** (true regardless
-     of authorship) if the author-level claim can't be made good.
+     of authorship) if the author-level claim can't be made good. **In the fallback, the
+     on-page timeline is framed strictly as proof of *role-separated work* (what the commit
+     subjects show) — never as proof of *distinct authorship*** — so it stays airtight even
+     if a determined skeptic clones a (public) repo off-page (per Critic-A).
 - **What proof artifacts the page shows and what each proves:**
   - **Role-prefixed git-log timeline** = our intended **testimonial wall** (we have no
     logos/stars yet; honest social proof, Dossier 03). It is the **"View the commits"
